@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>المهارات الحياتية | قيس جازي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563EB; /* Royal Blue */
+            --primary-light: #EFF6FF;
+            --success: #10B981;
+            --danger: #EF4444;
+            --surface: #FFFFFF;
+            --background: #F3F4F6;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* حاوية التطبيق - تصميم هاتف راقي */
+        .app-container {
+            width: 100%;
+            max-width: 480px; /* حجم هاتف قياسي */
+            min-height: 100dvh;
+            background-color: #F9FAFB;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 40px rgba(0,0,0,0.05);
+        }
+
+        /* إخفاء شريط التمرير مع بقاء الفعالية */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+
+        /* البطاقات النظيفة (Clean Cards) */
+        .clean-card {
+            background-color: var(--surface);
+            border-radius: 28px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+
+        /* العناوين البارزة */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #1F2937;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* نصوص الشرح الوافي */
+        .detailed-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #4B5563;
+            font-weight: 500;
+            text-align: justify;
+        }
+
+        /* التاجات (Tags) لأرقام الصفحات */
+        .page-tag {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 100px;
+            margin-right: auto; /* لدفعه لليسار */
+        }
+
+        /* شريط التنقل السفلي الأنيق */
+        .bottom-nav {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            display: flex;
+            padding: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+            z-index: 100;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 100px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            background-color: var(--text-main);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* خيارات الاختبار */
+        .quiz-btn {
+            width: 100%;
+            text-align: right;
+            background-color: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 20px;
+            padding: 16px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quiz-btn:active { transform: scale(0.98); }
+        
+        .quiz-btn.correct {
+            background-color: #ECFDF5;
+            border-color: var(--success);
+            color: #065F46;
+        }
+        
+        .quiz-btn.wrong {
+            background-color: #FEF2F2;
+            border-color: var(--danger);
+            color: #991B1B;
+        }
+
+        /* صندوق الشرح داخل الاختبار */
+        .explanation-box {
+            background-color: #F8FAFC;
+            border-right: 4px solid var(--primary);
+            border-radius: 16px;
+            padding: 16px;
+            margin-top: 16px;
+            display: none;
+            animation: slideDown 0.3s ease forwards;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeIn 0.4s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- الهيدر العلوي -->
+        <header class="bg-white px-6 pt-12 pb-4 sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-black text-gray-900 tracking-tight" id="header-title">الدرس التفصيلي</h1>
+                    <div class="mt-1 flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-blue-600"></span>
+                        <span class="text-sm font-bold text-gray-500">إعداد: قيس جازي</span>
+                    </div>
+                </div>
+                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-xl shadow-inner border border-blue-100">
+                    📚
+                </div>
+            </div>
+        </header>
+
+        <!-- منطقة المحتوى الرئيسية -->
+        <main class="flex-1 overflow-y-auto px-5 pt-6 pb-32">
+            
+            <!-- ============================== قسم الشرح الوافي ============================== -->
+            <div id="view-summary" class="fade-in space-y-2">
+                
+                <p class="text-gray-500 font-medium mb-6 px-2 text-center text-sm">
+                    شرح مفصل ومكتمل لجميع المواضيع المطلوبة في الفصل الأول، اقرأ بتمعن قبل بدء الاختبار.
+                </p>
+
+                <!-- 1. المفهوم -->
+                <div class="clean-card">
+                    <h2 class="section-title">
+                        <span class="text-2xl">💡</span> مفهوم المهارات الحياتية
+                        <span class="page-tag">ص 25</span>
+                    </h2>
+                    <p class="detailed-text">
+                        المهارات الحياتية ليست مجرد معلومات نظرية، بل هي <strong class="text-blue-600">مجموعة متكاملة من السلوكيات والمهارات الشخصية والاجتماعية والنفسية</strong> التي يكتسبها الفرد ليتعامل بفعالية ونجاح مع متغيرات الحياة وتحدياتها اليومية.
+                        <br><br>
+                        هذه المهارات تمكن الفرد من اتخاذ قرارات مدروسة وعقلانية، والتواصل بفعالية وإيجابية مع الآخرين، بالإضافة إلى تنمية قدراته على التأقلم مع الضغوط والمواقف الصعبة، وإدارة ذاته وانفعالاته بطريقة صحيحة. الهدف النهائي من اكتساب وتطبيق هذه المهارات هو الوصول بالفرد إلى قيادة <strong class="text-gray-900">حياة صحية، آمنة، ومنتجة</strong> تفيده وتفيد مجتمعه.
+                    </p>
+                </div>
+
+                <!-- 2. تصنيف كوثر كوجك -->
+                <div class="clean-card">
+                    <h2 class="section-title">
+                        <span class="text-2xl">🗂️</span> تصنيف المهارات (كوثر كوجك)
+                        <span class="page-tag">ص 28</span>
+                    </h2>
+                    <p class="detailed-text mb-4">
+                        قامت الباحثة كوثر كوجك بتصنيف المهارات الحياتية إلى أربعة مجالات رئيسية مترابطة، لتشمل جميع جوانب حياة الفرد:
+                    </p>
+                    <div class="space-y-4">
+                        <div class="bg-purple-50 p-4 rounded-2xl border border-purple-100">
+                            <h3 class="font-bold text-purple-800 mb-1">1. المهارات الشخصية:</h3>
+                            <p class="text-sm text-purple-900/80 font-medium leading-relaxed">تتعلق بوعي الفرد بذاته، مثل: معرفة الذات، بناء الثقة بالنفس، الوعي بالقدرات ونقاط الضعف، مهارة تحديد الأهداف الشخصية، وإدارة الوقت والضغوط.</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+                            <h3 class="font-bold text-blue-800 mb-1">2. المهارات الاجتماعية:</h3>
+                            <p class="text-sm text-blue-900/80 font-medium leading-relaxed">تنظم علاقة الفرد بالمجتمع، وتشمل: مهارات الاتصال والتواصل الفعال، التعاطف مع الآخرين وتفهم مشاعرهم، وتنمية مهارة العمل ضمن فريق أو جماعة.</p>
+                        </div>
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                            <h3 class="font-bold text-emerald-800 mb-1">3. المهارات العقلية / المعرفية:</h3>
+                            <p class="text-sm text-emerald-900/80 font-medium leading-relaxed">تركز على العمليات الذهنية، مثل: مهارات التفكير الناقد والإبداعي، مهارة التحليل والاستنتاج، ومهارات حل المشكلات واتخاذ القرار الصائب.</p>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100">
+                            <h3 class="font-bold text-orange-800 mb-1">4. المهارات العملية:</h3>
+                            <p class="text-sm text-orange-900/80 font-medium leading-relaxed">هي الجانب التطبيقي والأدائي، وتشمل المهارات اليدوية والعملية التي تساعد الفرد في تسيير أمور حياته اليومية ومواجهة المواقف الحياتية المباشرة.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. تصنيف المؤلف -->
+                <div class="clean-card">
+                    <h2 class="section-title">
+                        <span class="text-2xl">✍️</span> تصنيف المؤلف
+                        <span class="page-tag">ص 29</span>
+                    </h2>
+                    <p class="detailed-text mb-4">
+                        من وجهة نظر مؤلف الكتاب، تم تبسيط وتحديد المهارات الحياتية في خمس فئات أساسية تشكل محور المقرر الدراسي:
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3 items-start">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">1</span>
+                            <p class="text-gray-700 font-bold leading-relaxed">مهارات الاتصال والتواصل مع الآخرين.</p>
+                        </li>
+                        <li class="flex gap-3 items-start">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">2</span>
+                            <p class="text-gray-700 font-bold leading-relaxed">مهارات التفكير <span class="text-gray-500 font-medium">(ويشمل التفكير الناقد والتفكير الإبداعي)</span>.</p>
+                        </li>
+                        <li class="flex gap-3 items-start">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">3</span>
+                            <p class="text-gray-700 font-bold leading-relaxed">مهارات حل المشكلات واتخاذ القرار.</p>
+                        </li>
+                        <li class="flex gap-3 items-start">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">4</span>
+                            <p class="text-gray-700 font-bold leading-relaxed">مهارات إدارة الذات والتحكم بالانفعالات.</p>
+                        </li>
+                        <li class="flex gap-3 items-start">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">5</span>
+                            <p class="text-gray-700 font-bold leading-relaxed">مهارات العمل ضمن فريق <span class="text-gray-500 font-medium">(التعاون والمشاركة)</span>.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 4. الأهمية -->
+                <div class="clean-card">
+                    <h2 class="section-title">
+                        <span class="text-2xl">🌟</span> أهمية المهارات الحياتية
+                        <span class="page-tag">ص 31</span>
+                    </h2>
+                    <p class="text-sm font-bold text-amber-600 mb-4 bg-amber-50 p-2 rounded-lg text-center">(المطلوب حفظ 7 نقاط أساسية)</p>
+                    
+                    <div class="space-y-3">
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <strong class="text-gray-800">1. التكيف مع التغيرات الاجتماعية:</strong> <span class="text-gray-600 text-sm">تزيد من مرونة الفرد وقدرته على استيعاب التغيرات السريعة في المجتمع والبيئة المحيطة.</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <strong class="text-gray-800">2. بناء الثقة بالنفس:</strong> <span class="text-gray-600 text-sm">تساهم بشكل مباشر في رفع تقدير الفرد لذاته وإيمانه بقدراته ومواهبه.</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <strong class="text-gray-800">3. اتخاذ القرارات وحل المشكلات:</strong> <span class="text-gray-600 text-sm">تنمي العقلية التحليلية وتمنح الفرد أدوات عملية لحل أي مشكلة تواجهه بهدوء.</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <strong class="text-gray-800">4. بناء علاقات إيجابية:</strong> <span class="text-gray-600 text-sm">تعزز القدرة على التواصل الفعال واحترام الآخرين مما يبني شبكة علاقات صحية.</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <strong class="text-gray-800">5. الحماية من السلوكيات السلبية:</strong> <span class="text-gray-600 text-sm">تعتبر درعاً واقياً للشباب ضد الانحراف والمخاطر كالتعصب أو الإدمان.</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <strong class="text-gray-800">6. تحسين الأداء الأكاديمي والمهني:</strong> <span class="text-gray-600 text-sm">تؤدي إلى رفع إنتاجية الفرد وتفوقه في دراسته وعمله.</span>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+                            <strong class="text-gray-800">7. إدارة الوقت والضغوط:</strong> <span class="text-gray-600 text-sm">تساعد في ترتيب الأولويات والتعامل السليم مع الضغوط النفسية المتزايدة.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. الخصائص والعوامل -->
+                <div class="clean-card">
+                    <h2 class="section-title">
+                        <span class="text-2xl">✨</span> الخصائص والعوامل
+                        <span class="page-tag">ص 32-33</span>
+                    </h2>
+                    
+                    <h3 class="font-black text-lg text-blue-800 mb-2 mt-4">أولاً: خصائص المهارات الحياتية</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 font-medium text-sm mb-6 pb-6 border-b border-gray-100">
+                        <li><strong class="text-gray-900">مكتسبة وقابلة للتعلم:</strong> ليست وراثة أو فطرية بالكامل، بل نكتسبها بالتدريب والممارسة.</li>
+                        <li><strong class="text-gray-900">مرنة ومختلفة:</strong> تختلف أهميتها وطبيعتها باختلاف البيئة الثقافية والاجتماعية للفرد.</li>
+                        <li><strong class="text-gray-900">مترابطة وتكاملية:</strong> لا تعمل بمعزل، فمهارة التواصل تحتاج لمهارة التفكير، وتكمل بعضها البعض.</li>
+                        <li><strong class="text-gray-900">عملية وتطبيقية:</strong> تعتمد على الممارسة في مواقف الحياة الحقيقية وليس مجرد تنظير.</li>
+                        <li><strong class="text-gray-900">مستمرة:</strong> هي عملية نمو لا تتوقف، بل تستمر مع الفرد طوال مراحل حياته.</li>
+                    </ul>
+
+                    <h3 class="font-black text-lg text-rose-800 mb-2">ثانياً: العوامل المؤثرة في تنميتها (أول 6)</h3>
+                    <p class="text-sm text-gray-500 mb-3 font-medium">هناك العديد من المؤثرات التي تلعب دوراً في إكسابنا المهارات أو إعاقتها:</p>
+                    <div class="grid grid-cols-2 gap-2 text-center text-sm font-bold">
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">1. البيئة الأسرية والتنشئة</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">2. المدرسة والمناهج</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">3. جماعة الرفاق (الأصدقاء)</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">4. وسائل الإعلام والتواصل</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">5. الاستعداد والدافعية الشخصية</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">6. البيئة الثقافية والمجتمع</div>
+                    </div>
+                </div>
+
+                <!-- 6. خطوات التنمية والجوانب -->
+                <div class="clean-card">
+                    <h2 class="section-title">
+                        <span class="text-2xl">🪜</span> خطوات وجوانب التنمية
+                        <span class="page-tag">ص 34 و 36</span>
+                    </h2>
+
+                    <h3 class="font-black text-gray-800 mb-3">خطوات تنمية أي مهارة (ص 34):</h3>
+                    <div class="space-y-4 relative before:absolute before:right-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-100 mb-8 pb-6 border-b border-gray-100">
+                        <div class="flex gap-4 relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm">1</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">تحديد المهارة والشعور بالحاجة لها</h4>
+                                <p class="text-sm text-gray-600 mt-1 font-medium">الخطوة الأولى هي الوعي بنقص معين وتوليد الرغبة لتعلم هذه المهارة.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-blue-500 text-white font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm">2</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">اكتساب المعرفة النظرية</h4>
+                                <p class="text-sm text-gray-600 mt-1 font-medium">القراءة وفهم الأسس والمفاهيم النظرية المتعلقة بالمهارة المراد تعلمها.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-blue-400 text-white font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm">3</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">الملاحظة والنمذجة</h4>
+                                <p class="text-sm text-gray-600 mt-1 font-medium">مراقبة شخص خبير (قدوة) يقوم بتطبيق المهارة بفاعلية لمحاكاته.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 relative z-10">
+                            <div class="w-8 h-8 rounded-full bg-blue-300 text-white font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm">4</div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">التطبيق والتغذية الراجعة والتعميم</h4>
+                                <p class="text-sm text-gray-600 mt-1 font-medium">الممارسة الفعلية، وتلقي التوجيه لتصحيح الأخطاء، ثم تعميم المهارة على مواقف جديدة.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="font-black text-gray-800 mb-3">جوانب المهارات الحياتية (ص 36):</h3>
+                    <p class="text-sm text-gray-600 font-medium mb-3">كل مهارة تشتمل على ثلاثة جوانب متكاملة:</p>
+                    <div class="grid gap-3">
+                        <div class="bg-gray-50 p-3 rounded-xl border flex items-center gap-3">
+                            <span class="text-2xl">🧠</span>
+                            <div>
+                                <strong class="text-gray-900 block">الجانب المعرفي:</strong>
+                                <span class="text-xs text-gray-500 font-medium">المعلومات، المعارف، والمفاهيم النظرية التي يجب إدراكها.</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border flex items-center gap-3">
+                            <span class="text-2xl">❤️</span>
+                            <div>
+                                <strong class="text-gray-900 block">الجانب الوجداني (الانفعالي):</strong>
+                                <span class="text-xs text-gray-500 font-medium">القيم، المشاعر، والميول والاتجاهات نحو المهارة المتعلمة.</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border flex items-center gap-3">
+                            <span class="text-2xl">🏃‍♂️</span>
+                            <div>
+                                <strong class="text-gray-900 block">الجانب السلوكي (المهاري):</strong>
+                                <span class="text-xs text-gray-500 font-medium">الأداء الفعلي، الحركة، والتطبيق العملي للمهارة في الواقع.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. المعيقات ودور الأسرة -->
+                <div class="clean-card mb-10">
+                    <h2 class="section-title">
+                        <span class="text-2xl">🏡</span> دور الأسرة والمعيقات
+                        <span class="page-tag">ص 36-37</span>
+                    </h2>
+                    <p class="detailed-text mb-4 text-sm">
+                        تلعب الأسرة الدور الأبرز في تنمية المهارات أو إعاقتها، وهذه أبرز أول 6 نقاط تلخص المعيقات السلبية والأدوار الإيجابية للأسرة:
+                    </p>
+                    
+                    <div class="bg-red-50 p-4 rounded-2xl border border-red-100 mb-4">
+                        <h3 class="font-bold text-red-800 mb-2 flex items-center gap-2">
+                            <span class="bg-red-200 text-red-800 w-5 h-5 flex items-center justify-center rounded-full text-xs">x</span> 
+                            المعيقات (الأساليب الخاطئة):
+                        </h3>
+                        <ul class="text-sm text-red-900/80 space-y-2 font-medium">
+                            <li><strong>1. الحماية الزائدة والدلال المفرط:</strong> يمنع الطفل من الاعتماد على نفسه وتجربة الخطأ والتعلم، فينشأ اتكالياً.</li>
+                            <li><strong>2. التسلط والقهر:</strong> عدم إعطاء الأبناء مساحة للرأي واتخاذ القرارات يخنق مهارات التفكير والتواصل لديهم.</li>
+                            <li><strong>3. النقد المستمر والمقارنة:</strong> مقارنة الطفل بغيره بشكل سلبي يحطم ثقته بنفسه وتقديره لذاته.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                        <h3 class="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                            <span class="bg-emerald-200 text-emerald-800 w-5 h-5 flex items-center justify-center rounded-full text-xs">✓</span> 
+                            دور الأسرة في التنمية:
+                        </h3>
+                        <ul class="text-sm text-emerald-900/80 space-y-2 font-medium">
+                            <li><strong>4. توفير بيئة حوار ديمقراطية:</strong> الاستماع للأبناء وتقبل آرائهم ينمي مهارات الاتصال والتفكير الناقد.</li>
+                            <li><strong>5. القدوة الحسنة:</strong> تعلم الأبناء بالملاحظة والنمذجة من الوالدين هو أقوى أساليب اكتساب المهارات.</li>
+                            <li><strong>6. التشجيع على تحمل المسؤولية:</strong> إشراك الأبناء في مهام المنزل واتخاذ القرارات يبني الثقة والمهارات العملية.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ============================== قسم الاختبار (40 سؤال) ============================== -->
+            <div id="view-quiz" class="hidden h-full flex-col fade-in">
+                
+                <div class="bg-white rounded-3xl p-5 shadow-sm border border-gray-100 mb-6 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-gray-400 font-bold mb-1">السؤال الحالي</p>
+                        <p class="text-2xl font-black text-gray-900"><span id="q-counter">1</span><span class="text-sm text-gray-400 font-bold"> / 40</span></p>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-blue-400 font-bold mb-1">النقاط</p>
+                        <p class="text-2xl font-black text-blue-600" id="score-display">0</p>
+                    </div>
+                </div>
+
+                <div class="w-full bg-gray-200 rounded-full h-1.5 mb-8">
+                    <div class="bg-blue-600 h-1.5 rounded-full transition-all duration-300" id="progress-bar" style="width: 2.5%"></div>
+                </div>
+
+                <div class="flex-1">
+                    <h2 id="question-text" class="text-xl md:text-2xl font-black text-gray-900 leading-snug mb-8 text-center px-2">
+                        <!-- نص السؤال -->
+                    </h2>
+
+                    <div id="options-container">
+                        <!-- الخيارات -->
+                    </div>
+
+                    <!-- صندوق الشرح (يظهر بعد الإجابة) -->
+                    <div id="explanation-box" class="explanation-box">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span id="exp-icon" class="text-xl"></span>
+                            <h3 id="exp-title" class="font-black text-lg"></h3>
+                        </div>
+                        <p id="exp-text" class="text-gray-700 text-sm font-medium leading-relaxed mb-4"></p>
+                        <button onclick="nextQuestion()" class="w-full bg-gray-900 text-white font-bold py-3.5 rounded-xl active:scale-95 transition-transform">
+                            السؤال التالي
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- شاشة النتيجة النهائية -->
+            <div id="result-screen" class="hidden h-full flex-col items-center justify-center pt-20 fade-in text-center">
+                <div class="w-32 h-32 bg-blue-50 rounded-full flex items-center justify-center text-5xl mb-6 shadow-sm border border-blue-100">
+                    🏆
+                </div>
+                <h2 class="text-3xl font-black text-gray-900 mb-2">انتهى الاختبار!</h2>
+                <p class="text-gray-500 font-medium mb-8">إعداد وبرمجة: قيس جازي</p>
+                
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 w-full mb-8">
+                    <p class="text-gray-400 font-bold text-sm mb-2">النتيجة النهائية</p>
+                    <p class="text-6xl font-black text-blue-600"><span id="final-score"></span><span class="text-2xl text-gray-400">/40</span></p>
+                </div>
+
+                <button onclick="location.reload()" class="w-full bg-blue-600 text-white font-bold py-4 rounded-2xl shadow-lg active:scale-95 transition-transform text-lg">
+                    إعادة الاختبار والتجربة
+                </button>
+            </div>
+
+        </main>
+
+        <!-- شريط التنقل السفلي -->
+        <nav class="bottom-nav">
+            <div id="nav-summary" onclick="switchTab('summary')" class="nav-item active">الدرس التفصيلي</div>
+            <div id="nav-quiz" onclick="switchTab('quiz')" class="nav-item">الاختبار (40)</div>
+        </nav>
+
+    </div>
+
+    <!-- كود التفاعل والأسئلة -->
+    <script>
+        // التبديل بين الشاشات
+        function switchTab(tab) {
+            const summaryView = document.getElementById('view-summary');
+            const quizView = document.getElementById('view-quiz');
+            const navSummary = document.getElementById('nav-summary');
+            const navQuiz = document.getElementById('nav-quiz');
+            const headerTitle = document.getElementById('header-title');
+
+            if (tab === 'summary') {
+                summaryView.style.display = 'block';
+                quizView.style.display = 'none';
+                
+                navSummary.classList.add('active');
+                navQuiz.classList.remove('active');
+                headerTitle.innerText = "الدرس التفصيلي";
+            } else {
+                summaryView.style.display = 'none';
+                quizView.style.display = 'flex';
+                
+                navQuiz.classList.add('active');
+                navSummary.classList.remove('active');
+                headerTitle.innerText = "الاختبار التفاعلي";
+                
+                if (currentQuestionIndex === 0 && !isQuizStarted) {
+                    startQuiz();
+                }
+            }
+        }
+
+        // الأسئلة (40 سؤال شامل) مع شروحات وافية مرتبطة بالنص المطور
+        const quizData = [
+            { q: "هي مجموعة من السلوكيات والمهارات التي تساعد الفرد على اتخاذ قرارات مدروسة وإدارة الذات:", options: ["المهارات الحياتية", "المهارات الأكاديمية", "المهارات المهنية", "المهارات الرياضية"], ans: 0, exp: "هذا هو التعريف الدقيق للمهارات الحياتية كما ورد في صفحة 25، والتي تركز على السلوكيات الشخصية والاجتماعية." },
+            { q: "الهدف النهائي لاكتساب المهارات الحياتية هو أن تقود الفرد إلى:", options: ["الانعزال عن المجتمع", "حياة صحية ومنتجة", "الاعتماد الكلي على الآخرين", "تجاهل المشكلات"], ans: 1, exp: "كما ورد في التعريف (ص 25)، المهارات الحياتية تهدف إلى قيادة حياة صحية وآمنة ومنتجة للمجتمع." },
+            { q: "تشمل المهارات الحياتية بناءً على تعريفها مهارات:", options: ["نفسية واجتماعية فقط", "حركية فقط", "شخصية واجتماعية ونفسية", "اقتصادية وتجارية"], ans: 2, exp: "التعريف الشامل في صفحة 25 يضم ثلاث ركائز أساسية: مهارات شخصية، واجتماعية، ونفسية." },
+            { q: "القدرة على التواصل بفعالية وتنمية مهارات التأقلم تعتبر من:", options: ["المعوقات الحياتية", "مفهوم المهارات الحياتية", "المهارات غير الضرورية", "المهارات الفطرية البحتة"], ans: 1, exp: "التواصل والتأقلم هي عناصر أساسية ذُكرت صراحة داخل مفهوم وتعريف المهارات الحياتية." },
+            { q: "التعامل الإيجابي مع متطلبات وتحديات الحياة اليومية هو جوهر:", options: ["علم الفيزياء", "المهارات الحياتية", "التسلط الأسري", "الروتين اليومي"], ans: 1, exp: "هذا يمثل جوهر الهدف من تدريس وتطبيق المهارات الحياتية للفرد." },
+            { q: "وفقاً لتصنيف كوثر كوجك، معرفة الذات والثقة بالنفس تندرج تحت:", options: ["المهارات الاجتماعية", "المهارات الشخصية", "المهارات العملية", "المهارات العقلية"], ans: 1, exp: "في تصنيف كوثر كوجك (ص 28)، أي مهارة ترتبط بوعي الفرد وقدراته كالثقة بالنفس تعتبر مهارة 'شخصية'." },
+            { q: "مهارة التفكير الناقد والإبداعي وحل المشكلات في تصنيف كوثر كوجك هي مهارات:", options: ["شخصية", "اجتماعية", "عقلية/معرفية", "يدوية"], ans: 2, exp: "العمليات الذهنية كالتحليل والتفكير وحل المشكلات تُصنف تحت بند المهارات 'العقلية/المعرفية'." },
+            { q: "العمل في فريق والتعاطف مع الآخرين يصنف (عند كوثر كوجك) ضمن:", options: ["المهارات العقلية", "المهارات الاجتماعية", "المهارات الشخصية", "المهارات العملية"], ans: 1, exp: "لأنها تنظم علاقة الفرد بالمجتمع والآخرين، فهي مهارات 'اجتماعية'." },
+            { q: "المهارات الأدائية والمواقف اليدوية تسمى عند كوثر كوجك بـ:", options: ["المهارات العملية", "المهارات النظرية", "المهارات الانفعالية", "المهارات العقلية"], ans: 0, exp: "الجانب التطبيقي والأدائي المباشر يُعرف بالمهارات 'العملية'." },
+            { q: "من تصنيفات المؤلف للمهارات الحياتية في الكتاب:", options: ["مهارات الاتصال والتواصل", "المهارات الرياضية البدنية", "مهارات الطبخ", "مهارات قيادة السيارات"], ans: 0, exp: "مهارة الاتصال والتواصل هي الفئة الأولى من الفئات الخمسة التي ذكرها المؤلف ص 29." },
+            { q: "إدارة الذات والتحكم بالانفعالات تعتبر من المهارات الحياتية حسب وجهة نظر:", options: ["كوثر كوجك فقط", "المؤلف", "منظمة الصحة فقط", "الجميع خطأ"], ans: 1, exp: "المؤلف أفرد لها تصنيفاً خاصاً ضمن تصنيفاته الخمسة في صفحة 29." },
+            { q: "مهارة العمل ضمن فريق (التعاون) صنفها المؤلف كإحدى المهارات الحياتية الأساسية.", options: ["العبارة صحيحة", "العبارة خاطئة", "صنفها كمهارة ثانوية", "لم يذكرها"], ans: 0, exp: "نعم، هي التصنيف الخامس والأخير الذي ذكره المؤلف." },
+            { q: "أي من التالي ليس من تصنيف المؤلف المذكور (ص 29):", options: ["مهارات التفكير", "مهارات حل المشكلات", "المهارات الحرفية والصناعية", "مهارات العمل ضمن فريق"], ans: 2, exp: "لم يذكر المؤلف المهارات الحرفية والصناعية في تصنيفاته الخمسة." },
+            { q: "التفكير الناقد والإبداعي يصنفان معاً عند المؤلف تحت فئة:", options: ["مهارات التواصل", "مهارات التفكير", "مهارات إدارة الذات", "مهارات العمل الجماعي"], ans: 1, exp: "صنفها المؤلف معاً تحت بند 'مهارات التفكير'." },
+            { q: "من أهمية المهارات الحياتية أنها تزيد القدرة على التكيف مع:", options: ["التغيرات المناخية", "التغيرات الاجتماعية", "القوانين الفيزيائية", "الأمراض المعدية"], ans: 1, exp: "النقطة الأولى في الأهمية (ص 31) تؤكد على زيادة المرونة والتكيف مع التغيرات الاجتماعية السريعة." },
+            { q: "المهارات الحياتية تساهم في بناء:", options: ["الثقة بالنفس وتقدير الذات", "المباني السكنية", "الانطوائية", "الخوف من المستقبل"], ans: 0, exp: "تساهم بشكل مباشر في رفع تقدير الفرد لذاته وإيمانه بقدراته (النقطة الثانية)." },
+            { q: "من فوائد المهارات الحياتية تعزيز القدرة على:", options: ["اتخاذ القرارات وحل المشكلات", "تجنب اتخاذ أي قرار", "الاعتماد على الأسرة دائماً", "الهروب من الواقع"], ans: 0, exp: "تنمي العقلية التحليلية وتمنح الفرد أدوات عملية لحل أي مشكلة واتخاذ القرارات (النقطة الثالثة)." },
+            { q: "كيف تؤثر المهارات الحياتية على العلاقات مع الآخرين؟", options: ["تزيد من العزلة", "تعزز التواصل الفعال وبناء علاقات إيجابية", "تخلق الصراعات", "تلغي الحاجة للآخرين"], ans: 1, exp: "تعزز القدرة على التواصل واحترام الآخرين مما يبني شبكة علاقات صحية (النقطة الرابعة)." },
+            { q: "المهارات الحياتية تحمي الأفراد والشباب من:", options: ["السلوكيات السلبية والمخاطر", "النجاح المهني", "التطور التكنولوجي", "المشاركة المجتمعية"], ans: 0, exp: "تعتبر درعاً واقياً للشباب ضد الانحراف والمخاطر كالتعصب أو الإدمان (النقطة الخامسة)." },
+            { q: "على الصعيد الأكاديمي والمهني، المهارات الحياتية تؤدي إلى:", options: ["تراجع الأداء", "تحسين الأداء والإنتاجية", "عدم التأثير مطلقاً", "زيادة الغياب"], ans: 1, exp: "تؤدي إلى رفع إنتاجية الفرد وتفوقه في دراسته وعمله (النقطة السادسة)." },
+            { q: "تساعد المهارات الحياتية الفرد في إدارة:", options: ["أموال الآخرين", "الوقت والضغوط النفسية بفعالية", "المصانع الكبيرة", "المناهج الدراسية فقط"], ans: 1, exp: "تساعد في ترتيب الأولويات والتعامل السليم مع الضغوط النفسية المتزايدة (النقطة السابعة)." },
+            { q: "من خصائص المهارات الحياتية أنها:", options: ["فطرية موروثة بالكامل", "مكتسبة وقابلة للتعلم", "ثابتة لا تتغير", "خاصة بفئة عمرية واحدة"], ans: 1, exp: "ليست وراثة بالكامل، بل نكتسبها ونتعلمها بالتدريب والممارسة المستمرة (ص 32)." },
+            { q: "المهارات الحياتية تختلف أهميتها باختلاف البيئة الثقافية والاجتماعية، مما يعني أنها:", options: ["جامدة", "مرنة ومختلفة", "مستوردة", "غير قابلة للقياس"], ans: 1, exp: "تتميز بالمرونة، فما يعتبر مهارة ضرورية في مجتمع قد يختلف في مجتمع آخر." },
+            { q: "ارتباط مهارة التواصل بمهارة التفكير يدل على أن المهارات الحياتية:", options: ["منفصلة", "متناقضة", "مترابطة وتكمل بعضها", "عشوائية"], ans: 2, exp: "المهارات عبارة عن منظومة (مترابطة وتكاملية) لا تعمل بمعزل عن بعضها." },
+            { q: "طبيعة المهارات الحياتية تعتمد على التطبيق في مواقف حقيقية، أي أنها:", options: ["تلقينية", "عملية وتطبيقية", "تنظيرية", "خيالية"], ans: 1, exp: "من أهم خصائصها أنها 'عملية وتطبيقية' وليست مجرد نظريات تحفظ." },
+            { q: "عملية اكتساب وتطور المهارات الحياتية:", options: ["تتوقف بعد التخرج", "تنتهي في المراهقة", "مستمرة مدى الحياة", "تحدث في الطفولة فقط"], ans: 2, exp: "هي عملية نمو مستمرة مع الفرد في جميع مراحل حياته وتجاربه." },
+            { q: "العامل الأول والأقوى تأثيراً في تنمية المهارات الحياتية هو:", options: ["البيئة الأسرية والتنشئة", "الشركات الكبرى", "الأفلام السينمائية", "السفر للخارج"], ans: 0, exp: "الأسرة هي الحاضنة الأولى وهي المؤثر الأول والأساسي في تنشئة الفرد." },
+            { q: "تلعب المناهج التعليمية والمعلمون دوراً مهماً، وهذا يندرج تحت عامل:", options: ["البيئة المدرسية", "جماعة الرفاق", "البيئة الثقافية", "الاستعداد الشخصي"], ans: 0, exp: "المدرسة والمناهج هي العامل الثاني من العوامل المؤثرة المذكورة." },
+            { q: "تأثير الأصدقاء على الفرد في اكتساب المهارات يسمى تأثير:", options: ["وسائل الإعلام", "جماعة الرفاق", "النظام المدرسي", "الأسرة الممتدة"], ans: 1, exp: "الأصدقاء والأقران يشكلون (جماعة الرفاق) ولهم تأثير كبير جداً خاصة في سن الشباب." },
+            { q: "من العوامل الحديثة التي تلعب دوراً كبيراً في التنمية أو الإعاقة:", options: ["وسائل الإعلام والتواصل", "الزراعة التقليدية", "وسائل النقل", "الصناعات الثقيلة"], ans: 0, exp: "الإنترنت، الإعلام، ووسائل التواصل الحديثة أصبحت من أقوى العوامل المؤثرة." },
+            { q: "الدافعية والرغبة الداخلية للفرد في التعلم تندرج تحت عامل:", options: ["البيئة المجتمعية", "الاستعداد والدافعية الشخصية", "المناهج التعليمية", "جماعة الرفاق"], ans: 1, exp: "هذا العامل يركز على الفرد نفسه ورغبته وقدراته الذاتية للتعلم والتطور." },
+            { q: "الخطوة الأولى من خطوات تنمية المهارة الحياتية (ص 34) هي:", options: ["التطبيق العملي فوراً", "الملاحظة والنمذجة", "تحديد المهارة والشعور بالحاجة لها", "تعميم المهارة"], ans: 2, exp: "يبدأ التعلم دائماً بالوعي بوجود نقص وتوليد الرغبة (الشعور بالحاجة) لتعلم المهارة." },
+            { q: "بعد تحديد المهارة المطلوبة، الخطوة الثانية هي:", options: ["التعميم", "اكتساب المعرفة النظرية", "التطبيق العشوائي", "الاستسلام"], ans: 1, exp: "يجب أولاً القراءة وفهم الأسس والمفاهيم النظرية (اكتساب المعرفة)." },
+            { q: "مراقبة شخص خبير (قدوة) يطبق المهارة بفاعلية لمحاكاته تسمى مرحلة:", options: ["المعرفة النظرية", "الملاحظة والنمذجة", "تحديد الحاجة", "التعميم"], ans: 1, exp: "التعلم عن طريق رؤية القدوة يسمى (الملاحظة والنمذجة) وهي الخطوة الثالثة." },
+            { q: "أي الجوانب التالية يركز على المعلومات والمفاهيم النظرية للمهارة؟", options: ["الجانب الوجداني", "الجانب السلوكي", "الجانب المعرفي", "الجانب الحركي"], ans: 2, exp: "أي معلومات ومعارف تندرج تحت 'الجانب المعرفي' (ص 36)." },
+            { q: "القيم والمشاعر والميول نحو المهارة المتعلمة تمثل الجانب:", options: ["المعرفي", "السلوكي", "الوجداني (الانفعالي)", "النظري"], ans: 2, exp: "الجانب الوجداني يتعلق بتفاعل الشخص العاطفي وقبوله للمهارة." },
+            { q: "الأداء الفعلي والتطبيق العملي للمهارة في الواقع يمثل الجانب:", options: ["الوجداني", "المعرفي", "السلوكي (المهاري)", "الفلسفي"], ans: 2, exp: "الجانب السلوكي هو الترجمة العملية، أي الأداء والحركة والممارسة الفعلية." },
+            { q: "من المعيقات الأسرية التي تمنع استقلالية الأبناء وتجعلهم اتكاليين:", options: ["توفير الحوار", "الحماية الزائدة والدلال المفرط", "تحميلهم المسؤولية", "القدوة الحسنة"], ans: 1, exp: "الحماية الزائدة والدلال يمنعان الطفل من خوض التجارب والتعلم من أخطائه (ص 36)." },
+            { q: "أسلوب التسلط والقهر الأسري يؤدي إلى:", options: ["زيادة الإبداع", "خنق مهارات التفكير واتخاذ القرار", "تحسين التواصل", "بناء الثقة"], ans: 1, exp: "عدم إعطاء الأبناء مساحة للرأي يدمر مهارات التفكير والتواصل عندهم." },
+            { q: "من الأدوار الإيجابية التي يجب على الأسرة القيام بها لتنمية المهارات:", options: ["النقد المستمر", "المقارنة السلبية بالآخرين", "توفير بيئة حوار ديمقراطية", "التهميش"], ans: 2, exp: "البيئة الديمقراطية التي تسمح بالاستماع للأبناء وتقبل آرائهم تبني شخصيتهم بفعالية." }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let isQuizStarted = false;
+        let isAnswered = false;
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const progressFill = document.getElementById('progress-bar');
+        const qCounter = document.getElementById('q-counter');
+        const scoreDisplay = document.getElementById('score-display');
+        const explanationBox = document.getElementById('explanation-box');
+        
+        function startQuiz() {
+            isQuizStarted = true;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            isAnswered = false;
+            explanationBox.style.display = 'none';
+            optionsContainer.style.pointerEvents = 'auto';
+            
+            const q = quizData[currentQuestionIndex];
+            
+            qCounter.innerText = currentQuestionIndex + 1;
+            progressFill.style.width = `${((currentQuestionIndex) / 40) * 100}%`;
+            
+            questionText.classList.remove('fade-in');
+            void questionText.offsetWidth; 
+            questionText.classList.add('fade-in');
+            questionText.innerText = q.q;
+
+            optionsContainer.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-btn fade-in';
+                btn.style.animationDelay = `${idx * 0.05}s`;
+                
+                btn.innerHTML = `
+                    <span>${opt}</span>
+                    <div class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center shrink-0 icon-circle transition-colors"></div>
+                `;
+                
+                btn.onclick = () => selectAnswer(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(selectedIndex, btnElement) {
+            if (isAnswered) return;
+            isAnswered = true;
+            optionsContainer.style.pointerEvents = 'none';
+
+            const q = quizData[currentQuestionIndex];
+            const isCorrect = (selectedIndex === q.ans);
+
+            const allButtons = optionsContainer.querySelectorAll('button');
+            allButtons.forEach((btn, idx) => {
+                btn.style.animation = 'none'; // إيقاف الأنيميشن لمنع الرمش
+                const icon = btn.querySelector('.icon-circle');
+                
+                if (idx === q.ans) {
+                    btn.classList.add('correct');
+                    icon.classList.replace('border-gray-300', 'border-green-500');
+                    icon.classList.add('bg-green-500', 'text-white');
+                    icon.innerHTML = '✓';
+                } else if (idx === selectedIndex && !isCorrect) {
+                    btn.classList.add('wrong');
+                    icon.classList.replace('border-gray-300', 'border-red-500');
+                    icon.classList.add('bg-red-500', 'text-white');
+                    icon.innerHTML = '✕';
+                } else {
+                    btn.style.opacity = '0.5';
+                }
+            });
+
+            const expIcon = document.getElementById('exp-icon');
+            const expTitle = document.getElementById('exp-title');
+            
+            if (isCorrect) {
+                score++;
+                scoreDisplay.innerText = score;
+                expIcon.innerText = '🎯';
+                expTitle.innerText = "إجابة دقيقة!";
+                expTitle.className = "font-black text-lg text-green-700";
+                explanationBox.style.borderRightColor = 'var(--success)';
+            } else {
+                expIcon.innerText = '💡';
+                expTitle.innerText = "ركز أكثر!";
+                expTitle.className = "font-black text-lg text-red-700";
+                explanationBox.style.borderRightColor = 'var(--danger)';
+            }
+
+            document.getElementById('exp-text').innerText = q.exp;
+            explanationBox.style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                renderQuestion();
+                // التمرير لأعلى السؤال قليلاً
+                document.getElementById('view-quiz').scrollTo({top: 0, behavior: 'smooth'});
+            } else {
+                document.getElementById('view-quiz').style.display = 'none';
+                const resultScreen = document.getElementById('result-screen');
+                resultScreen.style.display = 'flex';
+                document.getElementById('final-score').innerText = score;
+            }
+        }
+    </script>
+</body>
+</html>
