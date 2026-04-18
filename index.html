@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -8,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563EB; /* Royal Blue */
+            --primary: #2563EB;
             --primary-light: #EFF6FF;
             --success: #10B981;
             --danger: #EF4444;
@@ -28,10 +29,9 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* حاوية التطبيق - تصميم هاتف راقي */
         .app-container {
             width: 100%;
-            max-width: 480px; /* حجم هاتف قياسي */
+            max-width: 480px;
             min-height: 100dvh;
             background-color: #F9FAFB;
             position: relative;
@@ -40,10 +40,8 @@
             box-shadow: 0 0 40px rgba(0,0,0,0.05);
         }
 
-        /* إخفاء شريط التمرير مع بقاء الفعالية */
         ::-webkit-scrollbar { width: 0px; background: transparent; }
 
-        /* البطاقات النظيفة (Clean Cards) */
         .clean-card {
             background-color: var(--surface);
             border-radius: 28px;
@@ -54,7 +52,6 @@
             transition: transform 0.2s ease;
         }
 
-        /* العناوين البارزة */
         .section-title {
             font-size: 1.25rem;
             font-weight: 800;
@@ -65,7 +62,6 @@
             gap: 10px;
         }
 
-        /* نصوص الشرح الوافي */
         .detailed-text {
             font-size: 1rem;
             line-height: 1.8;
@@ -74,7 +70,6 @@
             text-align: justify;
         }
 
-        /* التاجات (Tags) لأرقام الصفحات */
         .page-tag {
             background-color: var(--primary-light);
             color: var(--primary);
@@ -82,10 +77,9 @@
             font-weight: 700;
             padding: 4px 10px;
             border-radius: 100px;
-            margin-right: auto; /* لدفعه لليسار */
+            margin-right: auto;
         }
 
-        /* شريط التنقل السفلي الأنيق */
         .bottom-nav {
             position: fixed;
             bottom: 24px;
@@ -121,7 +115,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        /* خيارات الاختبار */
         .quiz-btn {
             width: 100%;
             text-align: right;
@@ -153,7 +146,6 @@
             color: #991B1B;
         }
 
-        /* صندوق الشرح داخل الاختبار */
         .explanation-box {
             background-color: #F8FAFC;
             border-right: 4px solid var(--primary);
@@ -177,7 +169,6 @@
 
     <div class="app-container">
         
-        <!-- الهيدر العلوي -->
         <header class="bg-white px-6 pt-12 pb-4 sticky top-0 z-50 border-b border-gray-100 shadow-sm">
             <div class="flex justify-between items-center">
                 <div>
@@ -193,256 +184,238 @@
             </div>
         </header>
 
-        <!-- منطقة المحتوى الرئيسية -->
         <main class="flex-1 overflow-y-auto px-5 pt-6 pb-32">
             
-            <!-- ============================== قسم الشرح الوافي ============================== -->
             <div id="view-summary" class="fade-in space-y-2">
                 
                 <p class="text-gray-500 font-medium mb-6 px-2 text-center text-sm">
                     شرح مفصل ومكتمل لجميع المواضيع المطلوبة في الفصل الأول، اقرأ بتمعن قبل بدء الاختبار.
                 </p>
 
-                <!-- 1. المفهوم -->
                 <div class="clean-card">
                     <h2 class="section-title">
                         <span class="text-2xl">💡</span> مفهوم المهارات الحياتية
-                        <span class="page-tag">ص 25</span>
+                        <span class="page-tag">ص 24-25</span>
                     </h2>
                     <p class="detailed-text">
-                        المهارات الحياتية ليست مجرد معلومات نظرية، بل هي <strong class="text-blue-600">مجموعة متكاملة من السلوكيات والمهارات الشخصية والاجتماعية والنفسية</strong> التي يكتسبها الفرد ليتعامل بفعالية ونجاح مع متغيرات الحياة وتحدياتها اليومية.
+                        من خلال عرض المفاهيم يتضح أن المهارات الحياتية هي <strong class="text-blue-600">مجموعة من الأنشطة والقدرات والسلوكيات والوسائل والكفاءات</strong> التي يمتلكها الفرد والتي من شأنها مساعدته على التفاعل الإيجابي والقدرة على التكيف والتعامل بفاعلية مع متطلبات الحياة اليومية وتحدياتها.
                         <br><br>
-                        هذه المهارات تمكن الفرد من اتخاذ قرارات مدروسة وعقلانية، والتواصل بفعالية وإيجابية مع الآخرين، بالإضافة إلى تنمية قدراته على التأقلم مع الضغوط والمواقف الصعبة، وإدارة ذاته وانفعالاته بطريقة صحيحة. الهدف النهائي من اكتساب وتطبيق هذه المهارات هو الوصول بالفرد إلى قيادة <strong class="text-gray-900">حياة صحية، آمنة، ومنتجة</strong> تفيده وتفيد مجتمعه.
+                        كما يقدم <strong class="text-gray-900">المؤلف تعريفاً</strong> ينص على أنها: مجموعة من المهارات الضرورية التي يحتاجها الفرد في حياته وينبغي أن يمارسها بنفسه، كما أنها تلبي حاجات المتعلم بصورة متكاملة لتسهم في بناء الشخصية بدنياً وعقلياً واجتماعياً وروحياً.
                     </p>
                 </div>
 
-                <!-- 2. تصنيف كوثر كوجك -->
                 <div class="clean-card">
                     <h2 class="section-title">
                         <span class="text-2xl">🗂️</span> تصنيف المهارات (كوثر كوجك)
-                        <span class="page-tag">ص 28</span>
+                        <span class="page-tag">ص 27-28</span>
                     </h2>
                     <p class="detailed-text mb-4">
-                        قامت الباحثة كوثر كوجك بتصنيف المهارات الحياتية إلى أربعة مجالات رئيسية مترابطة، لتشمل جميع جوانب حياة الفرد:
+                        أشارت الباحثة كوثر كوجك (2000) إلى تصنيف للمهارات الحياتية في ثلاثة مجالات رئيسية:
                     </p>
                     <div class="space-y-4">
                         <div class="bg-purple-50 p-4 rounded-2xl border border-purple-100">
-                            <h3 class="font-bold text-purple-800 mb-1">1. المهارات الشخصية:</h3>
-                            <p class="text-sm text-purple-900/80 font-medium leading-relaxed">تتعلق بوعي الفرد بذاته، مثل: معرفة الذات، بناء الثقة بالنفس، الوعي بالقدرات ونقاط الضعف، مهارة تحديد الأهداف الشخصية، وإدارة الوقت والضغوط.</p>
+                            <h3 class="font-bold text-purple-800 mb-1">1. مهارات انفعالية:</h3>
+                            <p class="text-sm text-purple-900/80 font-medium leading-relaxed">تشمل: ضبط المشاعر، التحكم في الانفعالات، سعة الصدر والتسامح، وتحمل الضغوط بأشكالها، وتنمية قوة الإرادة والقدرة على التكيف وتقدير مشاعر الآخرين.</p>
                         </div>
                         <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
-                            <h3 class="font-bold text-blue-800 mb-1">2. المهارات الاجتماعية:</h3>
-                            <p class="text-sm text-blue-900/80 font-medium leading-relaxed">تنظم علاقة الفرد بالمجتمع، وتشمل: مهارات الاتصال والتواصل الفعال، التعاطف مع الآخرين وتفهم مشاعرهم، وتنمية مهارة العمل ضمن فريق أو جماعة.</p>
+                            <h3 class="font-bold text-blue-800 mb-1">2. مهارات اجتماعية:</h3>
+                            <p class="text-sm text-blue-900/80 font-medium leading-relaxed">تشمل: تحمل المسئولية، احترام الذات، المشاركة في الأعمال الجماعية، القدرة على تكوين علاقات، وتقبل الخلافات (جنس - لون - دين)، والقدرة على التواصل.</p>
                         </div>
                         <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
-                            <h3 class="font-bold text-emerald-800 mb-1">3. المهارات العقلية / المعرفية:</h3>
-                            <p class="text-sm text-emerald-900/80 font-medium leading-relaxed">تركز على العمليات الذهنية، مثل: مهارات التفكير الناقد والإبداعي، مهارة التحليل والاستنتاج، ومهارات حل المشكلات واتخاذ القرار الصائب.</p>
-                        </div>
-                        <div class="bg-orange-50 p-4 rounded-2xl border border-orange-100">
-                            <h3 class="font-bold text-orange-800 mb-1">4. المهارات العملية:</h3>
-                            <p class="text-sm text-orange-900/80 font-medium leading-relaxed">هي الجانب التطبيقي والأدائي، وتشمل المهارات اليدوية والعملية التي تساعد الفرد في تسيير أمور حياته اليومية ومواجهة المواقف الحياتية المباشرة.</p>
+                            <h3 class="font-bold text-emerald-800 mb-1">3. مهارات عقلية:</h3>
+                            <p class="text-sm text-emerald-900/80 font-medium leading-relaxed">تشمل: القدرة على التفكير الناقد، القدرة على التعلم الذاتي والمستمر، القدرة على التخطيط السليم، إدراك العلاقات، والإبداع والابتكار.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. تصنيف المؤلف -->
                 <div class="clean-card">
                     <h2 class="section-title">
-                        <span class="text-2xl">✍️</span> تصنيف المؤلف
-                        <span class="page-tag">ص 29</span>
+                        <span class="text-2xl">✍️</span> المهارات الأساسية (كما يراها المؤلف)
+                        <span class="page-tag">ص 28-29</span>
                     </h2>
                     <p class="detailed-text mb-4">
-                        من وجهة نظر مؤلف الكتاب، تم تبسيط وتحديد المهارات الحياتية في خمس فئات أساسية تشكل محور المقرر الدراسي:
+                        من وجهة نظر مؤلف الكتاب، يمكن تلخيص المهارات الحياتية الأساسية في العناصر المرتبطة بالفصول المتعددة (شكل 1):
                     </p>
                     <ul class="space-y-3">
                         <li class="flex gap-3 items-start">
                             <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">1</span>
-                            <p class="text-gray-700 font-bold leading-relaxed">مهارات الاتصال والتواصل مع الآخرين.</p>
+                            <p class="text-gray-700 font-bold leading-relaxed">مهارات التفكير الإبداعي والتفكير الناقد.</p>
                         </li>
                         <li class="flex gap-3 items-start">
                             <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">2</span>
-                            <p class="text-gray-700 font-bold leading-relaxed">مهارات التفكير <span class="text-gray-500 font-medium">(ويشمل التفكير الناقد والتفكير الإبداعي)</span>.</p>
+                            <p class="text-gray-700 font-bold leading-relaxed">الإتصال والتواصل الاجتماعي.</p>
                         </li>
                         <li class="flex gap-3 items-start">
                             <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">3</span>
-                            <p class="text-gray-700 font-bold leading-relaxed">مهارات حل المشكلات واتخاذ القرار.</p>
+                            <p class="text-gray-700 font-bold leading-relaxed">التعامل مع الآخرين والثقة بالنفس والوعي بالذات.</p>
                         </li>
                         <li class="flex gap-3 items-start">
                             <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">4</span>
-                            <p class="text-gray-700 font-bold leading-relaxed">مهارات إدارة الذات والتحكم بالانفعالات.</p>
+                            <p class="text-gray-700 font-bold leading-relaxed">حل المشكلات واتخاذ القرار.</p>
                         </li>
                         <li class="flex gap-3 items-start">
                             <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">5</span>
-                            <p class="text-gray-700 font-bold leading-relaxed">مهارات العمل ضمن فريق <span class="text-gray-500 font-medium">(التعاون والمشاركة)</span>.</p>
+                            <p class="text-gray-700 font-bold leading-relaxed">التعامل مع الضغوطات وإدارة الوقت.</p>
                         </li>
                     </ul>
                 </div>
 
-                <!-- 4. الأهمية -->
                 <div class="clean-card">
                     <h2 class="section-title">
                         <span class="text-2xl">🌟</span> أهمية المهارات الحياتية
-                        <span class="page-tag">ص 31</span>
+                        <span class="page-tag">ص 30-31</span>
                     </h2>
-                    <p class="text-sm font-bold text-amber-600 mb-4 bg-amber-50 p-2 rounded-lg text-center">(المطلوب حفظ 7 نقاط أساسية)</p>
+                    <p class="text-sm font-bold text-amber-600 mb-4 bg-amber-50 p-2 rounded-lg text-center">(أبرز 7 نقاط من تلخيص المؤلف)</p>
                     
                     <div class="space-y-3">
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
-                            <strong class="text-gray-800">1. التكيف مع التغيرات الاجتماعية:</strong> <span class="text-gray-600 text-sm">تزيد من مرونة الفرد وقدرته على استيعاب التغيرات السريعة في المجتمع والبيئة المحيطة.</span>
+                            <strong class="text-gray-800">1. إدراك الذات:</strong> <span class="text-gray-600 text-sm">تساعد على إدراك الذات وتحقيق الثقة بالنفس.</span>
                         </div>
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
-                            <strong class="text-gray-800">2. بناء الثقة بالنفس:</strong> <span class="text-gray-600 text-sm">تساهم بشكل مباشر في رفع تقدير الفرد لذاته وإيمانه بقدراته ومواهبه.</span>
+                            <strong class="text-gray-800">2. تحمل المسؤولية:</strong> <span class="text-gray-600 text-sm">تكسب الفرد القدرة على تحمل المسؤولية.</span>
                         </div>
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
-                            <strong class="text-gray-800">3. اتخاذ القرارات وحل المشكلات:</strong> <span class="text-gray-600 text-sm">تنمي العقلية التحليلية وتمنح الفرد أدوات عملية لحل أي مشكلة تواجهه بهدوء.</span>
+                            <strong class="text-gray-800">3. الاستقلال الذاتي:</strong> <span class="text-gray-600 text-sm">تساعد على تحقيق قدر كبير من الاستقلال الذاتي والاعتماد على النفس.</span>
                         </div>
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
-                            <strong class="text-gray-800">4. بناء علاقات إيجابية:</strong> <span class="text-gray-600 text-sm">تعزز القدرة على التواصل الفعال واحترام الآخرين مما يبني شبكة علاقات صحية.</span>
+                            <strong class="text-gray-800">4. التعبير عن المشاعر:</strong> <span class="text-gray-600 text-sm">تنمي القدرة على التعبير عن المشاعر وتهذيبها.</span>
                         </div>
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
-                            <strong class="text-gray-800">5. الحماية من السلوكيات السلبية:</strong> <span class="text-gray-600 text-sm">تعتبر درعاً واقياً للشباب ضد الانحراف والمخاطر كالتعصب أو الإدمان.</span>
+                            <strong class="text-gray-800">5. التحكم الانفعالي:</strong> <span class="text-gray-600 text-sm">تكسب الفرد القدرة على التحكم الانفعالي.</span>
                         </div>
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
-                            <strong class="text-gray-800">6. تحسين الأداء الأكاديمي والمهني:</strong> <span class="text-gray-600 text-sm">تؤدي إلى رفع إنتاجية الفرد وتفوقه في دراسته وعمله.</span>
+                            <strong class="text-gray-800">6. التفاعل والاتصال:</strong> <span class="text-gray-600 text-sm">تنمي التفاعل الاجتماعي والاتصال الجيد مع الآخرين.</span>
                         </div>
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
-                            <strong class="text-gray-800">7. إدارة الوقت والضغوط:</strong> <span class="text-gray-600 text-sm">تساعد في ترتيب الأولويات والتعامل السليم مع الضغوط النفسية المتزايدة.</span>
+                            <strong class="text-gray-800">7. مواجهة المشكلات:</strong> <span class="text-gray-600 text-sm">تنمي القدرة على مواجهة مشكلات الحياة بفعالية.</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 5. الخصائص والعوامل -->
                 <div class="clean-card">
                     <h2 class="section-title">
                         <span class="text-2xl">✨</span> الخصائص والعوامل
-                        <span class="page-tag">ص 32-33</span>
+                        <span class="page-tag">ص 31-33</span>
                     </h2>
                     
                     <h3 class="font-black text-lg text-blue-800 mb-2 mt-4">أولاً: خصائص المهارات الحياتية</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-700 font-medium text-sm mb-6 pb-6 border-b border-gray-100">
-                        <li><strong class="text-gray-900">مكتسبة وقابلة للتعلم:</strong> ليست وراثة أو فطرية بالكامل، بل نكتسبها بالتدريب والممارسة.</li>
-                        <li><strong class="text-gray-900">مرنة ومختلفة:</strong> تختلف أهميتها وطبيعتها باختلاف البيئة الثقافية والاجتماعية للفرد.</li>
-                        <li><strong class="text-gray-900">مترابطة وتكاملية:</strong> لا تعمل بمعزل، فمهارة التواصل تحتاج لمهارة التفكير، وتكمل بعضها البعض.</li>
-                        <li><strong class="text-gray-900">عملية وتطبيقية:</strong> تعتمد على الممارسة في مواقف الحياة الحقيقية وليس مجرد تنظير.</li>
-                        <li><strong class="text-gray-900">مستمرة:</strong> هي عملية نمو لا تتوقف، بل تستمر مع الفرد طوال مراحل حياته.</li>
+                        <li><strong class="text-gray-900">التنوع والشمولية:</strong> تشمل كلا من الجوانب المادية وغير المادية.</li>
+                        <li><strong class="text-gray-900">الاختلاف:</strong> تختلف من مجتمع لآخر تبعاً لدرجة تقدمه ومن فترة زمنية لأخرى.</li>
+                        <li><strong class="text-gray-900">الطبيعة التبادلية:</strong> تعتمد على التبادل بين الفرد والمجتمع وتأثير كل منهما بالآخر.</li>
+                        <li><strong class="text-gray-900">التفاعل الناجح:</strong> تستهدف مساعدة الفرد على التفاعل الناجح مع الحياة وتطوير أساليب معايشته.</li>
                     </ul>
 
-                    <h3 class="font-black text-lg text-rose-800 mb-2">ثانياً: العوامل المؤثرة في تنميتها (أول 6)</h3>
-                    <p class="text-sm text-gray-500 mb-3 font-medium">هناك العديد من المؤثرات التي تلعب دوراً في إكسابنا المهارات أو إعاقتها:</p>
-                    <div class="grid grid-cols-2 gap-2 text-center text-sm font-bold">
-                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">1. البيئة الأسرية والتنشئة</div>
-                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">2. المدرسة والمناهج</div>
-                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">3. جماعة الرفاق (الأصدقاء)</div>
-                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">4. وسائل الإعلام والتواصل</div>
-                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">5. الاستعداد والدافعية الشخصية</div>
-                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">6. البيئة الثقافية والمجتمع</div>
+                    <h3 class="font-black text-lg text-rose-800 mb-2">ثانياً: العوامل المؤثرة في تنميتها (أبرز 6)</h3>
+                    <div class="grid grid-cols-2 gap-2 text-center text-sm font-bold mt-3">
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">1. العلاقات المدعمة</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">2. نماذج التقويم</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">3. تتابع الإثابة (التشجيع)</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">4. التعليمات الصحيحة</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">5. إتاحة الفرصة للاعتماد</div>
+                        <div class="bg-rose-50 text-rose-700 p-3 rounded-xl border border-rose-100">6. التفاعل مع الأقران</div>
                     </div>
                 </div>
 
-                <!-- 6. خطوات التنمية والجوانب -->
                 <div class="clean-card">
                     <h2 class="section-title">
                         <span class="text-2xl">🪜</span> خطوات وجوانب التنمية
-                        <span class="page-tag">ص 34 و 36</span>
+                        <span class="page-tag">ص 34-35</span>
                     </h2>
 
-                    <h3 class="font-black text-gray-800 mb-3">خطوات تنمية أي مهارة (ص 34):</h3>
+                    <h3 class="font-black text-gray-800 mb-3">من خطوات تنمية المهارة (للمؤلف):</h3>
                     <div class="space-y-4 relative before:absolute before:right-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-blue-100 mb-8 pb-6 border-b border-gray-100">
                         <div class="flex gap-4 relative z-10">
                             <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm">1</div>
                             <div>
-                                <h4 class="font-bold text-gray-900">تحديد المهارة والشعور بالحاجة لها</h4>
-                                <p class="text-sm text-gray-600 mt-1 font-medium">الخطوة الأولى هي الوعي بنقص معين وتوليد الرغبة لتعلم هذه المهارة.</p>
+                                <h4 class="font-bold text-gray-900">التأكد من نقص المهارة</h4>
+                                <p class="text-sm text-gray-600 mt-1 font-medium">الوعي بنقص المهارة لدى الأفراد وأنهم بحاجة לتعلمها.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 relative z-10">
                             <div class="w-8 h-8 rounded-full bg-blue-500 text-white font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm">2</div>
                             <div>
-                                <h4 class="font-bold text-gray-900">اكتساب المعرفة النظرية</h4>
-                                <p class="text-sm text-gray-600 mt-1 font-medium">القراءة وفهم الأسس والمفاهيم النظرية المتعلقة بالمهارة المراد تعلمها.</p>
+                                <h4 class="font-bold text-gray-900">التأكد من الفهم (الإدراك)</h4>
+                                <p class="text-sm text-gray-600 mt-1 font-medium">فهم الأفراد لمعنى المهارة وطبيعتها وأهميتها وكيف تؤدى.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 relative z-10">
                             <div class="w-8 h-8 rounded-full bg-blue-400 text-white font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm">3</div>
                             <div>
-                                <h4 class="font-bold text-gray-900">الملاحظة والنمذجة</h4>
-                                <p class="text-sm text-gray-600 mt-1 font-medium">مراقبة شخص خبير (قدوة) يقوم بتطبيق المهارة بفاعلية لمحاكاته.</p>
+                                <h4 class="font-bold text-gray-900">تهيئة المواقف للتدريب</h4>
+                                <p class="text-sm text-gray-600 mt-1 font-medium">إعداد مواقف لتدريبهم على ممارسة المهارة لاكتسابها.</p>
                             </div>
                         </div>
                         <div class="flex gap-4 relative z-10">
                             <div class="w-8 h-8 rounded-full bg-blue-300 text-white font-bold flex items-center justify-center shrink-0 border-2 border-white shadow-sm">4</div>
                             <div>
-                                <h4 class="font-bold text-gray-900">التطبيق والتغذية الراجعة والتعميم</h4>
-                                <p class="text-sm text-gray-600 mt-1 font-medium">الممارسة الفعلية، وتلقي التوجيه لتصحيح الأخطاء، ثم تعميم المهارة على مواقف جديدة.</p>
+                                <h4 class="font-bold text-gray-900">التأكد من انتقال أثر التعلم</h4>
+                                <p class="text-sm text-gray-600 mt-1 font-medium">ممارسة المهارة عبر مواقف مختلفة وتوفير أساليب الثواب.</p>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="font-black text-gray-800 mb-3">جوانب المهارات الحياتية (ص 36):</h3>
-                    <p class="text-sm text-gray-600 font-medium mb-3">كل مهارة تشتمل على ثلاثة جوانب متكاملة:</p>
+                    <h3 class="font-black text-gray-800 mb-3">جوانب تعلم المهارة (ص 35):</h3>
                     <div class="grid gap-3">
                         <div class="bg-gray-50 p-3 rounded-xl border flex items-center gap-3">
                             <span class="text-2xl">🧠</span>
                             <div>
                                 <strong class="text-gray-900 block">الجانب المعرفي:</strong>
-                                <span class="text-xs text-gray-500 font-medium">المعلومات، المعارف، والمفاهيم النظرية التي يجب إدراكها.</span>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 p-3 rounded-xl border flex items-center gap-3">
-                            <span class="text-2xl">❤️</span>
-                            <div>
-                                <strong class="text-gray-900 block">الجانب الوجداني (الانفعالي):</strong>
-                                <span class="text-xs text-gray-500 font-medium">القيم، المشاعر، والميول والاتجاهات نحو المهارة المتعلمة.</span>
+                                <span class="text-xs text-gray-500 font-medium">أول مستويات تعلم المهارة وهو الإدراك والعمليات العقلية.</span>
                             </div>
                         </div>
                         <div class="bg-gray-50 p-3 rounded-xl border flex items-center gap-3">
                             <span class="text-2xl">🏃‍♂️</span>
                             <div>
-                                <strong class="text-gray-900 block">الجانب السلوكي (المهاري):</strong>
-                                <span class="text-xs text-gray-500 font-medium">الأداء الفعلي، الحركة، والتطبيق العملي للمهارة في الواقع.</span>
+                                <strong class="text-gray-900 block">الجانب المهاري:</strong>
+                                <span class="text-xs text-gray-500 font-medium">كيفية أداء هذه المهارات الحياتية بطريقة عملية.</span>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-xl border flex items-center gap-3">
+                            <span class="text-2xl">❤️</span>
+                            <div>
+                                <strong class="text-gray-900 block">الجانب الانفعالي:</strong>
+                                <span class="text-xs text-gray-500 font-medium">يتعلق بالاتجاهات والتقدير، والقيم والوجدانيات.</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 7. المعيقات ودور الأسرة -->
                 <div class="clean-card mb-10">
                     <h2 class="section-title">
                         <span class="text-2xl">🏡</span> دور الأسرة والمعيقات
                         <span class="page-tag">ص 36-37</span>
                     </h2>
-                    <p class="detailed-text mb-4 text-sm">
-                        تلعب الأسرة الدور الأبرز في تنمية المهارات أو إعاقتها، وهذه أبرز أول 6 نقاط تلخص المعيقات السلبية والأدوار الإيجابية للأسرة:
-                    </p>
                     
-                    <div class="bg-red-50 p-4 rounded-2xl border border-red-100 mb-4">
-                        <h3 class="font-bold text-red-800 mb-2 flex items-center gap-2">
-                            <span class="bg-red-200 text-red-800 w-5 h-5 flex items-center justify-center rounded-full text-xs">x</span> 
-                            المعيقات (الأساليب الخاطئة):
-                        </h3>
-                        <ul class="text-sm text-red-900/80 space-y-2 font-medium">
-                            <li><strong>1. الحماية الزائدة والدلال المفرط:</strong> يمنع الطفل من الاعتماد على نفسه وتجربة الخطأ والتعلم، فينشأ اتكالياً.</li>
-                            <li><strong>2. التسلط والقهر:</strong> عدم إعطاء الأبناء مساحة للرأي واتخاذ القرارات يخنق مهارات التفكير والتواصل لديهم.</li>
-                            <li><strong>3. النقد المستمر والمقارنة:</strong> مقارنة الطفل بغيره بشكل سلبي يحطم ثقته بنفسه وتقديره لذاته.</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100 mb-4">
                         <h3 class="font-bold text-emerald-800 mb-2 flex items-center gap-2">
                             <span class="bg-emerald-200 text-emerald-800 w-5 h-5 flex items-center justify-center rounded-full text-xs">✓</span> 
                             دور الأسرة في التنمية:
                         </h3>
                         <ul class="text-sm text-emerald-900/80 space-y-2 font-medium">
-                            <li><strong>4. توفير بيئة حوار ديمقراطية:</strong> الاستماع للأبناء وتقبل آرائهم ينمي مهارات الاتصال والتفكير الناقد.</li>
-                            <li><strong>5. القدوة الحسنة:</strong> تعلم الأبناء بالملاحظة والنمذجة من الوالدين هو أقوى أساليب اكتساب المهارات.</li>
-                            <li><strong>6. التشجيع على تحمل المسؤولية:</strong> إشراك الأبناء في مهام المنزل واتخاذ القرارات يبني الثقة والمهارات العملية.</li>
+                            <li><strong>1. التخلي عن الحماية الزائدة:</strong> لأنها تضر بشخصية الطفل أكثر مما تفيده.</li>
+                            <li><strong>2. اتباع أسلوب الحوار:</strong> تشجيع الأبناء على التفاهم والمناقشة.</li>
+                            <li><strong>3. تسليم عصا القيادة:</strong> للابن مع متابعة خطواته عن قرب وبناء استقلاليته.</li>
+                            <li><strong>4. التخلي عن المعاملة غير السوية:</strong> كالقسوة والسخرية والتهديد والتفرقة.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-red-50 p-4 rounded-2xl border border-red-100">
+                        <h3 class="font-bold text-red-800 mb-2 flex items-center gap-2">
+                            <span class="bg-red-200 text-red-800 w-5 h-5 flex items-center justify-center rounded-full text-xs">x</span> 
+                            أبرز معيقات تنمية المهارات:
+                        </h3>
+                        <ul class="text-sm text-red-900/80 space-y-2 font-medium">
+                            <li><strong>1. عدم الاقتناع:</strong> واستيعاب المهارات الحياتية من قبل المجتمع.</li>
+                            <li><strong>2. ضآلة مشاركة المتعلمين:</strong> في تصميم الأنشطة الإعلامية والتثقيفية.</li>
+                            <li><strong>3. البيئة المدرسية:</strong> عدم تهيئتها واكتظاظ حجرات الدراسة.</li>
+                            <li><strong>4. طبيعة المعلم:</strong> وحالته الاقتصادية والاجتماعية والنفسية وندرة المراجع.</li>
                         </ul>
                     </div>
                 </div>
 
             </div>
 
-            <!-- ============================== قسم الاختبار (40 سؤال) ============================== -->
             <div id="view-quiz" class="hidden h-full flex-col fade-in">
                 
                 <div class="bg-white rounded-3xl p-5 shadow-sm border border-gray-100 mb-6 flex justify-between items-center">
@@ -462,14 +435,11 @@
 
                 <div class="flex-1">
                     <h2 id="question-text" class="text-xl md:text-2xl font-black text-gray-900 leading-snug mb-8 text-center px-2">
-                        <!-- نص السؤال -->
-                    </h2>
+                        </h2>
 
                     <div id="options-container">
-                        <!-- الخيارات -->
-                    </div>
+                        </div>
 
-                    <!-- صندوق الشرح (يظهر بعد الإجابة) -->
                     <div id="explanation-box" class="explanation-box">
                         <div class="flex items-center gap-2 mb-2">
                             <span id="exp-icon" class="text-xl"></span>
@@ -484,7 +454,6 @@
 
             </div>
 
-            <!-- شاشة النتيجة النهائية -->
             <div id="result-screen" class="hidden h-full flex-col items-center justify-center pt-20 fade-in text-center">
                 <div class="w-32 h-32 bg-blue-50 rounded-full flex items-center justify-center text-5xl mb-6 shadow-sm border border-blue-100">
                     🏆
@@ -504,7 +473,6 @@
 
         </main>
 
-        <!-- شريط التنقل السفلي -->
         <nav class="bottom-nav">
             <div id="nav-summary" onclick="switchTab('summary')" class="nav-item active">الدرس التفصيلي</div>
             <div id="nav-quiz" onclick="switchTab('quiz')" class="nav-item">الاختبار (40)</div>
@@ -512,7 +480,6 @@
 
     </div>
 
-    <!-- كود التفاعل والأسئلة -->
     <script>
         // التبديل بين الشاشات
         function switchTab(tab) {
@@ -543,48 +510,48 @@
             }
         }
 
-        // الأسئلة (40 سؤال شامل) مع شروحات وافية مرتبطة بالنص المطور
+        // الأسئلة (40 سؤال شامل متطابق مع التعديلات المأخوذة من الكتاب)
         const quizData = [
-            { q: "هي مجموعة من السلوكيات والمهارات التي تساعد الفرد على اتخاذ قرارات مدروسة وإدارة الذات:", options: ["المهارات الحياتية", "المهارات الأكاديمية", "المهارات المهنية", "المهارات الرياضية"], ans: 0, exp: "هذا هو التعريف الدقيق للمهارات الحياتية كما ورد في صفحة 25، والتي تركز على السلوكيات الشخصية والاجتماعية." },
-            { q: "الهدف النهائي لاكتساب المهارات الحياتية هو أن تقود الفرد إلى:", options: ["الانعزال عن المجتمع", "حياة صحية ومنتجة", "الاعتماد الكلي على الآخرين", "تجاهل المشكلات"], ans: 1, exp: "كما ورد في التعريف (ص 25)، المهارات الحياتية تهدف إلى قيادة حياة صحية وآمنة ومنتجة للمجتمع." },
-            { q: "تشمل المهارات الحياتية بناءً على تعريفها مهارات:", options: ["نفسية واجتماعية فقط", "حركية فقط", "شخصية واجتماعية ونفسية", "اقتصادية وتجارية"], ans: 2, exp: "التعريف الشامل في صفحة 25 يضم ثلاث ركائز أساسية: مهارات شخصية، واجتماعية، ونفسية." },
-            { q: "القدرة على التواصل بفعالية وتنمية مهارات التأقلم تعتبر من:", options: ["المعوقات الحياتية", "مفهوم المهارات الحياتية", "المهارات غير الضرورية", "المهارات الفطرية البحتة"], ans: 1, exp: "التواصل والتأقلم هي عناصر أساسية ذُكرت صراحة داخل مفهوم وتعريف المهارات الحياتية." },
-            { q: "التعامل الإيجابي مع متطلبات وتحديات الحياة اليومية هو جوهر:", options: ["علم الفيزياء", "المهارات الحياتية", "التسلط الأسري", "الروتين اليومي"], ans: 1, exp: "هذا يمثل جوهر الهدف من تدريس وتطبيق المهارات الحياتية للفرد." },
-            { q: "وفقاً لتصنيف كوثر كوجك، معرفة الذات والثقة بالنفس تندرج تحت:", options: ["المهارات الاجتماعية", "المهارات الشخصية", "المهارات العملية", "المهارات العقلية"], ans: 1, exp: "في تصنيف كوثر كوجك (ص 28)، أي مهارة ترتبط بوعي الفرد وقدراته كالثقة بالنفس تعتبر مهارة 'شخصية'." },
-            { q: "مهارة التفكير الناقد والإبداعي وحل المشكلات في تصنيف كوثر كوجك هي مهارات:", options: ["شخصية", "اجتماعية", "عقلية/معرفية", "يدوية"], ans: 2, exp: "العمليات الذهنية كالتحليل والتفكير وحل المشكلات تُصنف تحت بند المهارات 'العقلية/المعرفية'." },
-            { q: "العمل في فريق والتعاطف مع الآخرين يصنف (عند كوثر كوجك) ضمن:", options: ["المهارات العقلية", "المهارات الاجتماعية", "المهارات الشخصية", "المهارات العملية"], ans: 1, exp: "لأنها تنظم علاقة الفرد بالمجتمع والآخرين، فهي مهارات 'اجتماعية'." },
-            { q: "المهارات الأدائية والمواقف اليدوية تسمى عند كوثر كوجك بـ:", options: ["المهارات العملية", "المهارات النظرية", "المهارات الانفعالية", "المهارات العقلية"], ans: 0, exp: "الجانب التطبيقي والأدائي المباشر يُعرف بالمهارات 'العملية'." },
-            { q: "من تصنيفات المؤلف للمهارات الحياتية في الكتاب:", options: ["مهارات الاتصال والتواصل", "المهارات الرياضية البدنية", "مهارات الطبخ", "مهارات قيادة السيارات"], ans: 0, exp: "مهارة الاتصال والتواصل هي الفئة الأولى من الفئات الخمسة التي ذكرها المؤلف ص 29." },
-            { q: "إدارة الذات والتحكم بالانفعالات تعتبر من المهارات الحياتية حسب وجهة نظر:", options: ["كوثر كوجك فقط", "المؤلف", "منظمة الصحة فقط", "الجميع خطأ"], ans: 1, exp: "المؤلف أفرد لها تصنيفاً خاصاً ضمن تصنيفاته الخمسة في صفحة 29." },
-            { q: "مهارة العمل ضمن فريق (التعاون) صنفها المؤلف كإحدى المهارات الحياتية الأساسية.", options: ["العبارة صحيحة", "العبارة خاطئة", "صنفها كمهارة ثانوية", "لم يذكرها"], ans: 0, exp: "نعم، هي التصنيف الخامس والأخير الذي ذكره المؤلف." },
-            { q: "أي من التالي ليس من تصنيف المؤلف المذكور (ص 29):", options: ["مهارات التفكير", "مهارات حل المشكلات", "المهارات الحرفية والصناعية", "مهارات العمل ضمن فريق"], ans: 2, exp: "لم يذكر المؤلف المهارات الحرفية والصناعية في تصنيفاته الخمسة." },
-            { q: "التفكير الناقد والإبداعي يصنفان معاً عند المؤلف تحت فئة:", options: ["مهارات التواصل", "مهارات التفكير", "مهارات إدارة الذات", "مهارات العمل الجماعي"], ans: 1, exp: "صنفها المؤلف معاً تحت بند 'مهارات التفكير'." },
-            { q: "من أهمية المهارات الحياتية أنها تزيد القدرة على التكيف مع:", options: ["التغيرات المناخية", "التغيرات الاجتماعية", "القوانين الفيزيائية", "الأمراض المعدية"], ans: 1, exp: "النقطة الأولى في الأهمية (ص 31) تؤكد على زيادة المرونة والتكيف مع التغيرات الاجتماعية السريعة." },
-            { q: "المهارات الحياتية تساهم في بناء:", options: ["الثقة بالنفس وتقدير الذات", "المباني السكنية", "الانطوائية", "الخوف من المستقبل"], ans: 0, exp: "تساهم بشكل مباشر في رفع تقدير الفرد لذاته وإيمانه بقدراته (النقطة الثانية)." },
-            { q: "من فوائد المهارات الحياتية تعزيز القدرة على:", options: ["اتخاذ القرارات وحل المشكلات", "تجنب اتخاذ أي قرار", "الاعتماد على الأسرة دائماً", "الهروب من الواقع"], ans: 0, exp: "تنمي العقلية التحليلية وتمنح الفرد أدوات عملية لحل أي مشكلة واتخاذ القرارات (النقطة الثالثة)." },
-            { q: "كيف تؤثر المهارات الحياتية على العلاقات مع الآخرين؟", options: ["تزيد من العزلة", "تعزز التواصل الفعال وبناء علاقات إيجابية", "تخلق الصراعات", "تلغي الحاجة للآخرين"], ans: 1, exp: "تعزز القدرة على التواصل واحترام الآخرين مما يبني شبكة علاقات صحية (النقطة الرابعة)." },
-            { q: "المهارات الحياتية تحمي الأفراد والشباب من:", options: ["السلوكيات السلبية والمخاطر", "النجاح المهني", "التطور التكنولوجي", "المشاركة المجتمعية"], ans: 0, exp: "تعتبر درعاً واقياً للشباب ضد الانحراف والمخاطر كالتعصب أو الإدمان (النقطة الخامسة)." },
-            { q: "على الصعيد الأكاديمي والمهني، المهارات الحياتية تؤدي إلى:", options: ["تراجع الأداء", "تحسين الأداء والإنتاجية", "عدم التأثير مطلقاً", "زيادة الغياب"], ans: 1, exp: "تؤدي إلى رفع إنتاجية الفرد وتفوقه في دراسته وعمله (النقطة السادسة)." },
-            { q: "تساعد المهارات الحياتية الفرد في إدارة:", options: ["أموال الآخرين", "الوقت والضغوط النفسية بفعالية", "المصانع الكبيرة", "المناهج الدراسية فقط"], ans: 1, exp: "تساعد في ترتيب الأولويات والتعامل السليم مع الضغوط النفسية المتزايدة (النقطة السابعة)." },
-            { q: "من خصائص المهارات الحياتية أنها:", options: ["فطرية موروثة بالكامل", "مكتسبة وقابلة للتعلم", "ثابتة لا تتغير", "خاصة بفئة عمرية واحدة"], ans: 1, exp: "ليست وراثة بالكامل، بل نكتسبها ونتعلمها بالتدريب والممارسة المستمرة (ص 32)." },
-            { q: "المهارات الحياتية تختلف أهميتها باختلاف البيئة الثقافية والاجتماعية، مما يعني أنها:", options: ["جامدة", "مرنة ومختلفة", "مستوردة", "غير قابلة للقياس"], ans: 1, exp: "تتميز بالمرونة، فما يعتبر مهارة ضرورية في مجتمع قد يختلف في مجتمع آخر." },
-            { q: "ارتباط مهارة التواصل بمهارة التفكير يدل على أن المهارات الحياتية:", options: ["منفصلة", "متناقضة", "مترابطة وتكمل بعضها", "عشوائية"], ans: 2, exp: "المهارات عبارة عن منظومة (مترابطة وتكاملية) لا تعمل بمعزل عن بعضها." },
-            { q: "طبيعة المهارات الحياتية تعتمد على التطبيق في مواقف حقيقية، أي أنها:", options: ["تلقينية", "عملية وتطبيقية", "تنظيرية", "خيالية"], ans: 1, exp: "من أهم خصائصها أنها 'عملية وتطبيقية' وليست مجرد نظريات تحفظ." },
-            { q: "عملية اكتساب وتطور المهارات الحياتية:", options: ["تتوقف بعد التخرج", "تنتهي في المراهقة", "مستمرة مدى الحياة", "تحدث في الطفولة فقط"], ans: 2, exp: "هي عملية نمو مستمرة مع الفرد في جميع مراحل حياته وتجاربه." },
-            { q: "العامل الأول والأقوى تأثيراً في تنمية المهارات الحياتية هو:", options: ["البيئة الأسرية والتنشئة", "الشركات الكبرى", "الأفلام السينمائية", "السفر للخارج"], ans: 0, exp: "الأسرة هي الحاضنة الأولى وهي المؤثر الأول والأساسي في تنشئة الفرد." },
-            { q: "تلعب المناهج التعليمية والمعلمون دوراً مهماً، وهذا يندرج تحت عامل:", options: ["البيئة المدرسية", "جماعة الرفاق", "البيئة الثقافية", "الاستعداد الشخصي"], ans: 0, exp: "المدرسة والمناهج هي العامل الثاني من العوامل المؤثرة المذكورة." },
-            { q: "تأثير الأصدقاء على الفرد في اكتساب المهارات يسمى تأثير:", options: ["وسائل الإعلام", "جماعة الرفاق", "النظام المدرسي", "الأسرة الممتدة"], ans: 1, exp: "الأصدقاء والأقران يشكلون (جماعة الرفاق) ولهم تأثير كبير جداً خاصة في سن الشباب." },
-            { q: "من العوامل الحديثة التي تلعب دوراً كبيراً في التنمية أو الإعاقة:", options: ["وسائل الإعلام والتواصل", "الزراعة التقليدية", "وسائل النقل", "الصناعات الثقيلة"], ans: 0, exp: "الإنترنت، الإعلام، ووسائل التواصل الحديثة أصبحت من أقوى العوامل المؤثرة." },
-            { q: "الدافعية والرغبة الداخلية للفرد في التعلم تندرج تحت عامل:", options: ["البيئة المجتمعية", "الاستعداد والدافعية الشخصية", "المناهج التعليمية", "جماعة الرفاق"], ans: 1, exp: "هذا العامل يركز على الفرد نفسه ورغبته وقدراته الذاتية للتعلم والتطور." },
-            { q: "الخطوة الأولى من خطوات تنمية المهارة الحياتية (ص 34) هي:", options: ["التطبيق العملي فوراً", "الملاحظة والنمذجة", "تحديد المهارة والشعور بالحاجة لها", "تعميم المهارة"], ans: 2, exp: "يبدأ التعلم دائماً بالوعي بوجود نقص وتوليد الرغبة (الشعور بالحاجة) لتعلم المهارة." },
-            { q: "بعد تحديد المهارة المطلوبة، الخطوة الثانية هي:", options: ["التعميم", "اكتساب المعرفة النظرية", "التطبيق العشوائي", "الاستسلام"], ans: 1, exp: "يجب أولاً القراءة وفهم الأسس والمفاهيم النظرية (اكتساب المعرفة)." },
-            { q: "مراقبة شخص خبير (قدوة) يطبق المهارة بفاعلية لمحاكاته تسمى مرحلة:", options: ["المعرفة النظرية", "الملاحظة والنمذجة", "تحديد الحاجة", "التعميم"], ans: 1, exp: "التعلم عن طريق رؤية القدوة يسمى (الملاحظة والنمذجة) وهي الخطوة الثالثة." },
-            { q: "أي الجوانب التالية يركز على المعلومات والمفاهيم النظرية للمهارة؟", options: ["الجانب الوجداني", "الجانب السلوكي", "الجانب المعرفي", "الجانب الحركي"], ans: 2, exp: "أي معلومات ومعارف تندرج تحت 'الجانب المعرفي' (ص 36)." },
-            { q: "القيم والمشاعر والميول نحو المهارة المتعلمة تمثل الجانب:", options: ["المعرفي", "السلوكي", "الوجداني (الانفعالي)", "النظري"], ans: 2, exp: "الجانب الوجداني يتعلق بتفاعل الشخص العاطفي وقبوله للمهارة." },
-            { q: "الأداء الفعلي والتطبيق العملي للمهارة في الواقع يمثل الجانب:", options: ["الوجداني", "المعرفي", "السلوكي (المهاري)", "الفلسفي"], ans: 2, exp: "الجانب السلوكي هو الترجمة العملية، أي الأداء والحركة والممارسة الفعلية." },
-            { q: "من المعيقات الأسرية التي تمنع استقلالية الأبناء وتجعلهم اتكاليين:", options: ["توفير الحوار", "الحماية الزائدة والدلال المفرط", "تحميلهم المسؤولية", "القدوة الحسنة"], ans: 1, exp: "الحماية الزائدة والدلال يمنعان الطفل من خوض التجارب والتعلم من أخطائه (ص 36)." },
-            { q: "أسلوب التسلط والقهر الأسري يؤدي إلى:", options: ["زيادة الإبداع", "خنق مهارات التفكير واتخاذ القرار", "تحسين التواصل", "بناء الثقة"], ans: 1, exp: "عدم إعطاء الأبناء مساحة للرأي يدمر مهارات التفكير والتواصل عندهم." },
-            { q: "من الأدوار الإيجابية التي يجب على الأسرة القيام بها لتنمية المهارات:", options: ["النقد المستمر", "المقارنة السلبية بالآخرين", "توفير بيئة حوار ديمقراطية", "التهميش"], ans: 2, exp: "البيئة الديمقراطية التي تسمح بالاستماع للأبناء وتقبل آرائهم تبني شخصيتهم بفعالية." }
+            { q: "هي مجموعة من الأنشطة والقدرات والسلوكيات التي يمتلكها الفرد وتساعده على التفاعل الإيجابي والتكيف:", options: ["المهارات الحياتية", "المعلومات العامة", "المهارات الأكاديمية", "السلوكيات الفطرية"], ans: 0, exp: "هذا هو التعريف الشامل للمهارات الحياتية كما ورد ص 24-25، حيث تركز على التفاعل الإيجابي مع الحياة." },
+            { q: "يرى المؤلف أن المهارات الحياتية تسهم في بناء الشخصية بصورة متكاملة في الجوانب:", options: ["العقلية والاجتماعية فقط", "البدنية فقط", "بدنياً وعقلياً واجتماعياً وروحياً", "العاطفية فقط"], ans: 2, exp: "تعريف المؤلف (ص 25) يشمل البناء المتكامل المتوازن: بدنياً وعقلياً واجتماعياً وروحياً." },
+            { q: "وفقاً للباحثة كوثر كوجك (2000)، تم تصنيف المهارات الحياتية إلى:", options: ["4 مجالات", "مجالين فقط", "3 مجالات", "5 مجالات"], ans: 2, exp: "صنفتها كوثر كوجك إلى ثلاثة مجالات فقط: انفعالية، اجتماعية، وعقلية (ص 27)." },
+            { q: "التحكم في الانفعالات وتحمل الضغوط تندرج عند كوثر كوجك تحت:", options: ["المهارات العقلية", "المهارات الانفعالية", "المهارات الاجتماعية", "المهارات الحركية"], ans: 1, exp: "أي شيء يتعلق بضبط المشاعر وسعة الصدر يندرج تحت المهارات (الانفعالية) (ص 27)." },
+            { q: "تكوين العلاقات وتقبل الخلافات (جنس-لون-دين) تصنف عند كوجك كـ:", options: ["مهارات اجتماعية", "مهارات انفعالية", "مهارات معرفية", "مهارات وجدانية"], ans: 0, exp: "القدرة على التواصل وتقبل الآخرين تندرج تحت المهارات (الاجتماعية) (ص 28)." },
+            { q: "وفقاً لتصنيف كوثر كوجك، الإبداع والابتكار والتفكير الناقد هي مهارات:", options: ["عملية", "اجتماعية", "عقلية", "انفعالية"], ans: 2, exp: "الإبداع والتعلم الذاتي وكل ما يخص العمليات الذهنية يتبع للمهارات (العقلية) (ص 28)." },
+            { q: "من تصنيفات المهارات الأساسية كما يراها المؤلف (شكل 1):", options: ["حل المشكلات واتخاذ القرار", "المهارات الرياضية", "مهارات الطبخ", "مهارات القيادة الآلية"], ans: 0, exp: "حل المشكلات واتخاذ القرار تعد من العناصر المحورية التي ذكرها المؤلف ورسمها في المخطط الخاص به (ص 29)." },
+            { q: "أهمية المهارات الحياتية تشمل أنها تكسب الفرد القدرة على:", options: ["الهروب من المشكلات", "تحمل المسؤولية والاستقلال الذاتي", "الانعزال عن الآخرين", "تجاهل التكنولوجيا"], ans: 1, exp: "ذكر المؤلف 7 نقاط رئيسية في ص 30، منها تحقيق قدر كبير من الاستقلال وتحمل المسؤولية." },
+            { q: "تساعد المهارات الحياتية المتعلم على التحكم في:", options: ["أسعار الأسواق", "الانفعالات والمشاعر", "قرارات الآخرين", "التغيرات المناخية"], ans: 1, exp: "تنمية القدرة على التعبير عن المشاعر وتهذيبها والتحكم الانفعالي من أهم فوائد المهارات الحياتية للمتعلم." },
+            { q: "إحدى النقاط التي لخصها المؤلف في أهمية المهارات الحياتية:", options: ["تكوين ثروة مالية", "إدراك الذات وتحقيق الثقة بالنفس", "اكتساب القوة البدنية المفرطة", "حفظ المناهج الدراسية نصاً"], ans: 1, exp: "إدراك الذات وتحقيق الثقة هي النقطة الأولى في ملخص المؤلف لأهمية المهارات (ص 30)." },
+            { q: "من خصائص المهارات الحياتية أنها تشمل الجوانب:", options: ["المادية فقط", "غير المادية فقط", "المادية وغير المادية", "النظرية والتاريخية"], ans: 2, exp: "الخاصية الأولى تشير إلى (التنوع والشمولية) لتشمل الجوانب المادية وغير المادية لأساليب إشباع الفرد لاحتياجاته (ص 31)." },
+            { q: "المهارات الحياتية ثابتة لا تتغير من مجتمع لآخر.", options: ["العبارة صحيحة", "العبارة خاطئة", "تتغير للأطفال فقط", "تتغير للمراهقين فقط"], ans: 1, exp: "العبارة خاطئة، فمن خصائصها أنها تختلف من مجتمع لآخر ومن فترة زمنية لأخرى (ص 31)." },
+            { q: "تستهدف المهارات الحياتية مساعدة الفرد على:", options: ["التفاعل الناجح مع الحياة وتطوير أساليب معايشته", "التغلب على أقرانه بالقوة", "الاعتماد الدائم على الوالدين", "الحفظ والتلقين المستمر"], ans: 0, exp: "من أهم خصائصها مساعدة الفرد على التفاعل الناجح وتطوير أساليب المعايشة مع الحياة (ص 32)." },
+            { q: "من العوامل المؤثرة في تنمية المهارات الحياتية:", options: ["الجلوس في المنزل", "التفاعل مع الأقران ونماذج التقويم", "النوم الطويل", "كثرة تناول الطعام"], ans: 1, exp: "تفاعل الأقران ونماذج التقويم وتتابع الإثابة من أهم الستة عوامل المذكورة في ص 32." },
+            { q: "وجود علاقات قوية تساعد على اكتساب المهارة يعرف ضمن العوامل بـ:", options: ["العلاقات المدعمة", "نماذج التقويم", "إتاحة الفرصة", "التعليمات"], ans: 0, exp: "العلاقات المدعمة تجعل الفرد يصر على اكتساب المهارة وهذا هو العامل الأول (ص 32)." },
+            { q: "من العوامل التي تؤثر على اكتساب المهارة، ضرورة تقديم توجيهات صحيحة تسمى:", options: ["العلاقات المدعمة", "تتابع الإثابة", "التعليمات", "التحديات"], ans: 2, exp: "التعليمات يجب تعلمها بطريقة صحيحة سواء في البيت أو خارجه لاكتساب المهارة." },
+            { q: "الخطوة الأولى في تنمية المهارات الحياتية وفقاً لملخص المؤلف (ص 34):", options: ["تهيئة الموقف فوراً", "التأكد من نقص المهارة لدى الأفراد", "التأكد من انتقال أثر التعلم", "توزيع المكافآت"], ans: 1, exp: "تبدأ الخطوات بالتأكد من نقص المهارة لدى الأفراد المقيمين لمعرفة ما يحتاجونه وما هو ضروري." },
+            { q: "بعد التأكد من نقص المهارة، يجب في الخطوة الثانية:", options: ["التأكد من فهم الأفراد لمعنى المهارة وطبيعتها", "توفير الثواب والمكافأة", "التطبيق في مواقف جديدة", "إنهاء البرنامج"], ans: 0, exp: "يجب أولاً فهم طبيعة المهارة وكيف تؤدى قبل البدء بالتدريب العملي." },
+            { q: "عندما يتدرب الأفراد على المهارة لاكتسابها، فإن الخطوة التالية هي:", options: ["تجاهلهم تماماً", "التأكد من ممارستها بانتقال أثر التعلم عبر مواقف مختلفة", "إلغاء الثواب", "الانتقال لمهارة أخرى مباشرة"], ans: 1, exp: "انتقال أثر التعلم وتطبيقه في مواقف مختلفة هو دليل على اكتساب المهارة الحقيقي (ص 34)." },
+            { q: "أي الجوانب التالية في تعلم المهارة يمثل أول المستويات والعمليات العقلية؟", options: ["الجانب الانفعالي", "الجانب المهاري", "الجانب المعرفي", "الجانب الحركي"], ans: 2, exp: "الجانب المعرفي يمثل الإدراك وهو أول مستويات التعلم ويدخل ضمن العمليات العقلية (ص 35)." },
+            { q: "الجانب المهاري للمهارة الحياتية يتعلق بـ:", options: ["المعارف والمعلومات النظري", "الوجدانيات والمشاعر", "القيم والاتجاهات", "كيفية أداء المهارات بطريقة عملية"], ans: 3, exp: "يأتي بعد الإدراك وهو كيفية تأدية المهارات بشكل حركي وعملي." },
+            { q: "الاتجاهات والتقدير والقيم في المهارة تندرج تحت الجانب:", options: ["العملي", "المعرفي", "الانفعالي", "السلوكي"], ans: 2, exp: "الجانب الانفعالي يتعلق بكل ما هو وجداني وقيمي ومشاعر تجاه المهارة (ص 35)." },
+            { q: "من الأدوار الإيجابية للأسرة في تنمية المهارات الحياتية لأبنائها:", options: ["توفير الحماية الزائدة", "استخدام التهديد للضبط", "قبول الفروق الفردية واتباع أسلوب التفاهم", "القيام بالواجبات بدلاً عنهم"], ans: 2, exp: "الأسرة الناجحة تقبل الفروق الفردية بين الأبناء وتشجع أسلوب الحوار والمناقشة (ص 36)." },
+            { q: "لماذا تعتبر الحماية الزائدة من المعيقات داخل الأسرة؟", options: ["لأنها تضر بشخصية الطفل وتمنع استقلاليته", "لأنها تزيد من مهاراته العقلية", "لأنها تقوي تفكيره الناقد", "لأنها تعزز اعتماده على ذاته"], ans: 0, exp: "ذكر المؤلف صراحة (ص 36) أن الحماية الزائدة للطفل تضر بشخصيته أكثر مما تفيده." },
+            { q: "تشجيع الأسرة أبناءها على الاستقلالية في التفكير يعتبر:", options: ["تدليلاً مفرطاً", "خطأً تربوياً", "دوراً إيجابياً في تنمية المهارات", "أسلوباً تسلطياً"], ans: 2, exp: "الاستقلالية في التفكير من أبرز الاعتبارات التي ينبغي للأسرة أخذها في الحسبان (ص 36)." },
+            { q: "القسوة والسخرية والتهديد من قبل الأسرة:", options: ["تعد من أساليب المعاملة السوية", "تعد من أساليب المعاملة غير السوية الواجب التخلي عنها", "تزيد من التفكير الإبداعي", "تسرع عملية التعلم"], ans: 1, exp: "ذكر المؤلف ضرورة أن تتخلى الأسرة عن هذه الأساليب غير السوية ليتمكن الطفل من النمو بشكل سليم." },
+            { q: "أول معيق لتنمية المهارات الحياتية بشكل عام في المجتمع:", options: ["اكتظاظ الفصول", "عدم الاقتناع واستيعاب المهارات الحياتية", "طبيعة المعلم", "ندرة الكتب"], ans: 1, exp: "عدم الاقتناع والاستيعاب لفكرة المهارات الحياتية هي أول المشاكل التي تواجه تطبيقها (ص 37)." },
+            { q: "ضآلة مشاركة المتعلمين في تصميم الأنشطة التثقيفية:", options: ["تسرّع من اكتساب المهارات", "لا تؤثر أبداً", "تعتبر من المعيقات لتنمية المهارات", "دليل على قوة المنهج"], ans: 2, exp: "عندما يقل دور المتعلم ومشاركته، يصبح ذلك عائقاً كبيراً أمام تنمية مهاراته الحياتية." },
+            { q: "اكتظاظ حجرات الدراسة بالمتعلمين يندرج تحت:", options: ["مميزات المدارس الكبيرة", "معيقات تنمية المهارات الحياتية", "أهداف التربية الحديثة", "خصائص التفاعل مع الأقران"], ans: 1, exp: "عدد الطلاب الكبير يعيق البيئة المدرسية من تطبيق وتدريب المهارات بشكل صحيح وفعال (ص 37)." },
+            { q: "عدم إيلاء وسائل الإعلام الأهمية لدور المهارات الحياتية يؤثر سلباً خاصة على:", options: ["الأطفال الرضع", "الشيوخ وكبار السن", "المراهقين", "المعلمين فقط"], ans: 2, exp: "أشار المؤلف أن غياب دور الإعلام يؤثر وبخاصة على (المراهقين) لشدة تأثرهم به (ص 37)." },
+            { q: "ما هو دور (إتاحة الفرصة) كعامل مؤثر في تنمية المهارات؟", options: ["يجعل المتعلم اتكالياً", "يساعده على الاعتماد على نفسه واكتساب المهارة", "يقلل من التفاعل مع الأقران", "يزيد من الحماية الزائدة"], ans: 1, exp: "إتاحة الفرصة تجعل الطفل يخوض التجربة ولا يعتمد على الآخرين مما يسهل الاكتساب (ص 32)." },
+            { q: "تتابع الإثابة (توفير الثواب والمكافأة) أثناء التدريب يؤدي إلى:", options: ["انطفاء المهارة", "تثبيت أثر تعلم المهارة وتدعيمها", "نسيان المهارة بسرعة", "زيادة الغموض والتردد"], ans: 1, exp: "التشجيع والمكافأة تعزز وتثبت السلوك المكتسب وتقوي دافعية المتعلم (ص 32 و 34)." },
+            { q: "إحدى أهم الجوانب التي ركز عليها المؤلف في المهارات الحياتية (في شكل 1):", options: ["الصيانة المنزلية", "التوعية الغذائية والصحية", "إصلاح السيارات", "الديكور الداخلي"], ans: 1, exp: "من ضمن الدوائر المحيطة بالمهارات الحياتية في (شكل 1) كانت 'الصحية' و'التوعية الغذائية'." },
+            { q: "القدرة على التنبؤ بالأحداث وإدراك العلاقات من المهارات (بحسب كوثر كوجك):", options: ["الانفعالية", "الاجتماعية", "العقلية", "البدنية"], ans: 2, exp: "العمليات الذهنية المتقدمة كالتنبؤ والتخطيط تصنف كمهارات عقلية." },
+            { q: "من واجبات الأسرة لتنمية مهارات أبنائها تسليمهم:", options: ["المال بلا حدود", "عصا القيادة مع المتابعة عن قرب", "الأجهزة الذكية دائماً", "للأصدقاء كلياً"], ans: 1, exp: "إعطاء الابن القيادة مع بقاء عين المتابعة ينمي شخصيته بشكل آمن وإيجابي (ص 36)." },
+            { q: "عندما يفهم الفرد نظرياً كيف يسبح، فهو قد اكتسب الجانب:", options: ["المهاري", "الانفعالي", "السلوكي", "المعرفي"], ans: 3, exp: "المعلومات والمعارف النظرية تمثل أولاً وقبل كل شيء الجانب (المعرفي) للمهارة." },
+            { q: "عندما يقفز الفرد للماء ويقوم بالسباحة فعلياً، يكون قد طبق الجانب:", options: ["المعرفي", "المهاري", "الوجداني", "الانفعالي"], ans: 1, exp: "الممارسة والأداء الفعلي الحركي هو جوهر (الجانب المهاري)." },
+            { q: "المتغيرات المستمرة في المجتمع تتطلب من الفرد التسلح بالمهارات الحياتية لتساعده على:", options: ["الانطواء في المنزل", "مواجهة التطور العلمي والتقني", "الاستغناء عن التعليم", "مهاجمة ثقافات الآخرين"], ans: 1, exp: "المهارات الحياتية ضرورية لمواكبة التعقيد والتطور العلمي والتقني واكتشاف معنى الحياة (ص 22)." },
+            { q: "المهارات الحياتية تلبي حاجات المتعلم بصورة متكاملة ولا يمكن أن:", options: ["يتعلمها في المدرسة", "يستعيض عنها بمساعدة الآخرين بل يجب أن يمارسها بنفسه", "تكون مفيدة له مستقبلاً", "تتأثر بالمجتمع"], ans: 1, exp: "ذكر المؤلف بوضوح أنه (ينبغي أن يمارسها بنفسه ولا يمكن أن يستعيض عنها بمساعدة الآخرين) (ص 25)." },
+            { q: "من المعيقات التي تخص العملية التعليمية نفسها وتعيق تنمية المهارات:", options: ["كثرة النوادي", "ندرة الكتب والمراجع والدراسات المتخصصة", "وجود أخصائي نفسي", "مشاركة الطلاب الإيجابية"], ans: 1, exp: "نقص المصادر والمراجع والدراسات يعتبر عائقاً كبيراً أمام المعلمين لتطبيقها وتدريسها (ص 37)." }
         ];
 
         let currentQuestionIndex = 0;
@@ -645,7 +612,7 @@
 
             const allButtons = optionsContainer.querySelectorAll('button');
             allButtons.forEach((btn, idx) => {
-                btn.style.animation = 'none'; // إيقاف الأنيميشن لمنع الرمش
+                btn.style.animation = 'none';
                 const icon = btn.querySelector('.icon-circle');
                 
                 if (idx === q.ans) {
@@ -688,7 +655,6 @@
             currentQuestionIndex++;
             if (currentQuestionIndex < quizData.length) {
                 renderQuestion();
-                // التمرير لأعلى السؤال قليلاً
                 document.getElementById('view-quiz').scrollTo({top: 0, behavior: 'smooth'});
             } else {
                 document.getElementById('view-quiz').style.display = 'none';
