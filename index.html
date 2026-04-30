@@ -8,27 +8,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #B45309; /* Deep Amber / Gold */
-            --primary-light: #FEF3C7;
-            --success: #059669;
-            --danger: #E11D48;
-            --background: #0F172A; /* Slate 900 fallback */
-            --text-main: #1E293B;
-            --text-muted: #475569;
+            --neon-purple: #c084fc;
+            --neon-cyan: #22d3ee;
+            --epic-gold: #fbbf24;
+            --dark-glass: rgba(15, 23, 42, 0.75);
+            --darker-glass: rgba(2, 6, 23, 0.85);
+            --success-glow: #10b981;
+            --danger-glow: #ef4444;
         }
         
         body { 
             font-family: 'Tajawal', sans-serif; 
-            background-color: var(--background);
-            color: var(--text-main); 
+            color: #cbd5e1; /* Light Slate for readable text */
             margin: 0; 
             display: flex; 
             justify-content: center; 
             -webkit-tap-highlight-color: transparent; 
             min-height: 100vh;
+            background-color: #020617;
         }
 
-        /* إصلاح مشكلة الخلفية على الهواتف */
+        /* خلفية أسطورية ثابتة ومناسبة للهواتف */
         body::before {
             content: '';
             position: fixed;
@@ -36,426 +36,442 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            /* صورة مجرة/سديم ملحمية */
+            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
             background-size: cover;
-            z-index: -1;
-        }
-        
-        /* Titles Font - Academic Vibe */
-        h1, h2, h3, .section-title, #header-title {
-            font-family: 'Amiri', serif;
+            filter: brightness(0.6) contrast(1.2);
+            z-index: -2;
         }
 
-        /* Container Styling with Heavy Glassmorphism */
+        /* تأثير جزيئات النجوم (اختياري وبسيط) */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
         .app-container { 
             width: 100%; 
-            max-width: 520px; 
+            max-width: 540px; 
             min-height: 100dvh; 
-            background: rgba(248, 250, 252, 0.75); 
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
             position: relative; 
             display: flex; 
             flex-direction: column; 
-            box-shadow: 0 0 60px rgba(0,0,0,0.5); 
-            overflow: hidden;
-            border-left: 1px solid rgba(255,255,255,0.3);
-            border-right: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 0 100px rgba(0,0,0,0.8); 
+            background: linear-gradient(180deg, transparent 0%, rgba(2,6,23,0.9) 100%);
         }
         
         ::-webkit-scrollbar { width: 0px; background: transparent; }
 
-        /* Premium Bookish Cards */
-        .clean-card { 
-            background: rgba(255, 255, 255, 0.95); 
+        /* البطاقات الأسطورية (Epic Cards) */
+        .epic-card { 
+            background: var(--dark-glass); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 24px; 
-            padding: 30px; 
-            margin-bottom: 24px; 
-            box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.15), inset 0 0 0 1px rgba(180, 83, 9, 0.1); 
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            padding: 28px; 
+            margin-bottom: 28px; 
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(192, 132, 252, 0.05); 
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
-        
-        .clean-card::before {
+
+        .epic-card::before {
             content: '';
             position: absolute;
-            top: 0; right: 0; w-1; h-full;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, var(--primary), transparent);
-            opacity: 0.5;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-purple), transparent);
+            opacity: 0.7;
         }
 
-        .clean-card:hover {
+        .epic-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 45px -5px rgba(15, 23, 42, 0.2), inset 0 0 0 1px rgba(180, 83, 9, 0.2); 
+            border-color: rgba(192, 132, 252, 0.6);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(192, 132, 252, 0.1); 
         }
 
-        .section-title { 
-            font-size: 1.6rem; 
+        .epic-title { 
+            font-family: 'Amiri', serif;
+            font-size: 1.7rem; 
             font-weight: 700; 
-            color: #0F172A; 
+            background: linear-gradient(to right, var(--epic-gold), #fef08a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px; 
             display: flex; 
             align-items: center; 
             gap: 12px; 
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
         }
         
-        .detailed-text { 
-            font-size: 1.05rem; 
+        .epic-text { 
+            font-size: 1.1rem; 
             line-height: 2; 
-            color: #334155; 
+            color: #e2e8f0; 
             font-weight: 500; 
             text-align: justify; 
         }
 
-        .page-tag { 
-            background: linear-gradient(135deg, #B45309, #D97706); 
-            color: white; 
+        .rune-tag { 
+            background: rgba(251, 191, 36, 0.1); 
+            color: var(--epic-gold); 
             font-size: 0.8rem; 
             font-family: 'Tajawal', sans-serif;
             font-weight: 800; 
-            padding: 4px 14px; 
-            border-radius: 100px; 
+            padding: 4px 12px; 
+            border-radius: 8px; 
             margin-right: auto;
-            box-shadow: 0 4px 12px rgba(180, 83, 9, 0.3);
-            letter-spacing: 0.5px;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            text-shadow: none;
+            -webkit-text-fill-color: var(--epic-gold);
         }
 
-        /* Floating Bottom Nav - Golden Accent */
-        .bottom-nav { 
+        /* Glowing HUD Bottom Nav */
+        .hud-nav { 
             position: fixed; 
             bottom: 24px; 
             left: 50%; 
             transform: translateX(-50%); 
-            background: rgba(15, 23, 42, 0.9); 
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 100px; 
+            background: var(--darker-glass); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px; 
             display: flex; 
-            padding: 8px; 
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255,255,255,0.1); 
-            border: 1px solid rgba(217, 119, 6, 0.3); 
+            padding: 6px; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(34, 211, 238, 0.2); 
+            border: 1px solid rgba(34, 211, 238, 0.4); 
             z-index: 100; 
             width: 90%; 
             max-width: 440px; 
         }
         
-        .nav-item { 
+        .hud-item { 
             flex: 1; 
             text-align: center; 
-            padding: 12px 0; 
-            border-radius: 100px; 
-            font-weight: 700; 
+            padding: 14px 0; 
+            border-radius: 16px; 
+            font-weight: 800; 
             font-size: 1rem; 
-            color: #94A3B8; 
+            color: #64748b; 
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
             cursor: pointer; 
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            position: relative;
         }
         
-        .nav-item.active { 
-            background: linear-gradient(135deg, #B45309, #D97706); 
-            color: white; 
-            box-shadow: 0 8px 20px rgba(180, 83, 9, 0.4); 
+        .hud-item.active { 
+            background: rgba(34, 211, 238, 0.15); 
+            color: var(--neon-cyan); 
+            box-shadow: inset 0 0 15px rgba(34, 211, 238, 0.3); 
+            border: 1px solid rgba(34, 211, 238, 0.5);
+            text-shadow: 0 0 10px rgba(34, 211, 238, 0.8);
         }
 
-        /* Quiz Buttons */
-        .quiz-btn { 
+        /* Mythical Quiz Buttons */
+        .rune-btn { 
             width: 100%; 
             text-align: right; 
-            background: #FFFFFF; 
-            border: 2px solid #E2E8F0; 
-            border-radius: 20px; 
+            background: rgba(30, 41, 59, 0.6); 
+            border: 1px solid rgba(148, 163, 184, 0.2); 
+            border-radius: 16px; 
             padding: 18px 24px; 
             font-size: 1.1rem; 
             font-weight: 700; 
-            color: #1E293B; 
+            color: #f8fafc; 
             margin-bottom: 16px; 
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
         }
         
-        .quiz-btn:hover {
-            border-color: #FCD34D;
-            background: #FFFBEB;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.08);
+        .rune-btn:hover {
+            border-color: var(--neon-cyan);
+            background: rgba(34, 211, 238, 0.05);
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 25px rgba(34, 211, 238, 0.15);
         }
         
-        .quiz-btn:active { transform: scale(0.98); }
+        .rune-btn:active { transform: scale(0.98); }
         
-        .quiz-btn.correct { 
-            background: linear-gradient(to left, #ECFDF5, #ffffff); 
-            border-color: var(--success); 
-            color: #065F46; 
+        .rune-btn.correct { 
+            background: rgba(16, 185, 129, 0.15); 
+            border-color: var(--success-glow); 
+            color: #34d399; 
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.3), inset 0 0 15px rgba(16, 185, 129, 0.2);
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
         }
         
-        .quiz-btn.wrong { 
-            background: linear-gradient(to left, #FFF1F2, #ffffff); 
-            border-color: var(--danger); 
-            color: #9F1239; 
+        .rune-btn.wrong { 
+            background: rgba(239, 68, 68, 0.15); 
+            border-color: var(--danger-glow); 
+            color: #fca5a5; 
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.3), inset 0 0 15px rgba(239, 68, 68, 0.2);
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
         }
 
-        /* Explanation Box */
-        .explanation-box { 
-            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); 
-            border-right: 5px solid var(--primary); 
-            border-radius: 20px; 
+        /* Magical Explanation Box */
+        .magic-box { 
+            background: rgba(2, 6, 23, 0.8); 
+            border-right: 4px solid var(--neon-cyan); 
+            border-radius: 16px; 
             padding: 24px; 
             margin-top: 24px; 
             display: none; 
-            animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; 
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 10px 20px rgba(180, 83, 9, 0.1);
+            animation: slideUpFade 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(34, 211, 238, 0.1);
+            border-left: 1px solid rgba(34, 211, 238, 0.2);
+            border-top: 1px solid rgba(34, 211, 238, 0.2);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.2);
         }
 
-        @keyframes slideDown { 
-            from { opacity: 0; transform: translateY(-20px) scale(0.95); } 
-            to { opacity: 1; transform: translateY(0) scale(1); } 
+        @keyframes slideUpFade { 
+            0% { opacity: 0; transform: translateY(20px); } 
+            100% { opacity: 1; transform: translateY(0); } 
         }
         
         .fade-in { animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Custom Header Styling */
-        .glass-header {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(217, 119, 6, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-        }
+        /* Glowing Accent Classes */
+        .text-glow-purple { color: #e9d5ff; text-shadow: 0 0 15px var(--neon-purple); }
+        .text-glow-cyan { color: #cffafe; text-shadow: 0 0 15px var(--neon-cyan); }
+        .text-glow-gold { color: #fef08a; text-shadow: 0 0 15px var(--epic-gold); }
+        .text-glow-emerald { color: #d1fae5; text-shadow: 0 0 15px var(--success-glow); }
+        .text-glow-rose { color: #ffe4e6; text-shadow: 0 0 15px var(--danger-glow); }
+
+        .border-glow-purple { border: 1px solid rgba(192, 132, 252, 0.5); box-shadow: inset 0 0 15px rgba(192, 132, 252, 0.2); }
+        .border-glow-cyan { border: 1px solid rgba(34, 211, 238, 0.5); box-shadow: inset 0 0 15px rgba(34, 211, 238, 0.2); }
+
     </style>
 </head>
 <body>
 <div class="app-container">
 
-    <!-- ====== Header ====== -->
-    <header class="glass-header px-6 pt-12 pb-5 sticky top-0 z-50">
-        <div class="flex justify-between items-center">
+    <!-- ====== Epic Header ====== -->
+    <header class="px-6 pt-12 pb-6 relative z-10">
+        <div class="flex justify-between items-center bg-slate-900/60 p-4 rounded-3xl border border-slate-700/50 backdrop-blur-xl shadow-2xl">
             <div>
-                <h1 class="text-3xl font-bold text-slate-900 tracking-tight" id="header-title">الدرس التفصيلي</h1>
-                <div class="mt-2 flex items-center gap-2 bg-amber-50 w-fit px-4 py-1.5 rounded-full border border-amber-200/50 shadow-sm">
-                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-600 animate-pulse shadow-[0_0_8px_rgba(217,119,6,0.6)]"></span>
-                    <span class="text-sm font-bold text-amber-800" style="font-family: 'Tajawal', sans-serif;">إعداد: قيس جازي</span>
+                <h1 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-400 tracking-tight font-serif" style="text-shadow: 0 0 30px rgba(192,132,252,0.5);" id="header-title">الدرس التفصيلي</h1>
+                <div class="mt-2 flex items-center gap-2 bg-slate-800/80 w-fit px-4 py-1.5 rounded-xl border border-cyan-500/30">
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#22d3ee]"></span>
+                    <span class="text-sm font-bold text-cyan-100 tracking-wider">إعداد: قيس جازي</span>
                 </div>
             </div>
-            <div class="w-14 h-14 bg-gradient-to-br from-slate-800 to-slate-900 text-amber-400 rounded-2xl flex items-center justify-center text-2xl shadow-xl shadow-slate-900/30 transform -rotate-3 border border-slate-700">📖</div>
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-900 to-slate-900 text-purple-300 rounded-2xl flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(192,132,252,0.4)] border border-purple-500/50 transform rotate-12 transition-transform hover:rotate-0">🔮</div>
         </div>
     </header>
 
-    <main class="flex-1 overflow-y-auto px-5 pt-8 pb-32">
+    <main class="flex-1 overflow-y-auto px-5 pb-32">
 
-        <!-- ====== قسم الشرح ====== -->
-        <div id="view-summary" class="fade-in space-y-5">
+        <!-- ====== قسم الشرح الأسطوري ====== -->
+        <div id="view-summary" class="fade-in space-y-6">
 
-            <div class="text-center mb-8 relative">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-slate-300"></div>
-                </div>
-                <div class="relative flex justify-center">
-                    <span class="bg-slate-800 text-amber-100 font-bold px-6 py-2 rounded-full text-sm shadow-md border border-slate-700" style="font-family: 'Tajawal', sans-serif;">شرح مفصل ومصحح من الكتاب مباشرةً للفصل الأول</span>
-                </div>
+            <div class="text-center mb-8">
+                <span class="bg-slate-900/80 text-cyan-300 font-bold px-6 py-2.5 rounded-full text-sm border border-cyan-500/30 shadow-[0_0_15px_rgba(34,211,238,0.2)] inline-block tracking-wide">شرح مفصل ومصحح من الكتاب مباشرةً للفصل الأول</span>
             </div>
 
             <!-- 1. المفهوم -->
-            <div class="clean-card">
-                <h2 class="section-title">
-                    <span class="text-3xl bg-amber-50 p-2.5 rounded-xl border border-amber-100 shadow-sm">💡</span> 
+            <div class="epic-card">
+                <h2 class="epic-title">
+                    <span class="text-3xl bg-slate-800/80 p-2.5 rounded-xl border border-amber-500/30 shadow-[0_0_15px_rgba(251,191,36,0.3)]">📜</span> 
                     مفهوم المهارات الحياتية
-                    <span class="page-tag">ص 22-25</span>
+                    <span class="rune-tag">ص 22-25</span>
                 </h2>
-                <p class="detailed-text">
+                <p class="epic-text">
                     تعددت تعريفات المهارات الحياتية ولا يوجد تعريف جامع لها فمما لا شك فيه أن مفهوم المهارة نفسه يعبر عن القدرات العالية والبراعة. وفيما يلي أبرز التعريفات:
                     <br><br>
-                    تُعرّفها <strong class="text-amber-700 bg-amber-50 px-1.5 rounded border-b border-amber-200">منظمة الصحة العالمية (1993)</strong> بأنها قدرات الفرد على السلوك الإيجابي والتكيّف، والتي تجعله يتعامل بفعالية مع متطلبات الحياة اليومية وتحدياتها.
+                    تُعرّفها <strong class="text-glow-cyan bg-cyan-900/30 px-2 py-0.5 rounded border border-cyan-500/30">منظمة الصحة العالمية (1993)</strong> بأنها قدرات الفرد على السلوك الإيجابي والتكيّف، والتي تجعله يتعامل بفعالية مع متطلبات الحياة اليومية وتحدياتها.
                     <br><br>
-                    أما <strong class="text-slate-900 font-bold">المؤلف</strong> فيرى أن المهارات الحياتية هي: <strong class="text-amber-700 font-black">مجموعة من الأنشطة والقدرات والسلوكيات والطرق والكفاءات</strong> التي يمتلكها الفرد، والتي من شأنها مساعدته على التفاعل الإيجابي والقدرة على التكيف والتعامل بفاعلية مع متطلبات الحياة اليومية وتحدياتها، وهي ضرورية لبناء الشخصية بصورة متكاملة بدنياً وعقلياً واجتماعياً وروحياً. ومن أمثلتها: التفكير الإبتكاري، التفكير الناقد، الاتصال الاجتماعي، التعامل مع الآخرين، اتخاذ القرار، إدارة الوقت، التعامل مع الضغوط، تقدير الذات.
+                    أما <strong class="text-white font-black text-shadow-md">المؤلف</strong> فيرى أن المهارات الحياتية هي: <strong class="text-glow-gold font-black bg-amber-900/30 px-2 rounded border border-amber-500/30">مجموعة من الأنشطة والقدرات والسلوكيات والطرق والكفاءات</strong> التي يمتلكها الفرد، والتي من شأنها مساعدته على التفاعل الإيجابي والقدرة على التكيف والتعامل بفاعلية مع متطلبات الحياة اليومية وتحدياتها، وهي ضرورية لبناء الشخصية بصورة متكاملة بدنياً وعقلياً واجتماعياً وروحياً. ومن أمثلتها: التفكير الإبتكاري، التفكير الناقد، الاتصال الاجتماعي، التعامل مع الآخرين، اتخاذ القرار، إدارة الوقت، التعامل مع الضغوط، تقدير الذات.
                 </p>
             </div>
 
             <!-- 2. تصنيف كوثر كوجك -->
-            <div class="clean-card">
-                <h2 class="section-title">
-                    <span class="text-3xl bg-amber-50 p-2.5 rounded-xl border border-amber-100 shadow-sm">🗂️</span> 
+            <div class="epic-card">
+                <h2 class="epic-title">
+                    <span class="text-3xl bg-slate-800/80 p-2.5 rounded-xl border border-purple-500/30 shadow-[0_0_15px_rgba(192,132,252,0.3)]">🗂️</span> 
                     تصنيف المهارات (كوثر كوجك، 2000)
-                    <span class="page-tag">ص 28</span>
+                    <span class="rune-tag">ص 28</span>
                 </h2>
-                <p class="detailed-text mb-6">
-                    أشارت الباحثة كوثر كوجك (2000) إلى تصنيف المهارات الحياتية في <strong class="text-white bg-slate-800 px-3 py-1 rounded-lg text-lg shadow-sm">ثلاثة</strong> مجالات رئيسية:
+                <p class="epic-text mb-6">
+                    أشارت الباحثة كوثر كوجك (2000) إلى تصنيف المهارات الحياتية في <strong class="text-white bg-purple-600/50 px-3 py-1 rounded-xl text-lg border border-purple-400/50 shadow-[0_0_10px_rgba(192,132,252,0.5)]">ثلاثة</strong> مجالات رئيسية:
                 </p>
                 <div class="space-y-4">
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-2 h-full bg-rose-500 opacity-80"></div>
-                        <h3 class="font-bold text-slate-800 text-lg mb-2 flex items-center gap-2"><span class="w-7 h-7 bg-rose-100 text-rose-700 rounded-lg flex justify-center items-center text-sm font-black">1</span> المهارات الانفعالية:</h3>
-                        <p class="text-sm text-slate-600 font-medium leading-relaxed pr-3">ضبط المشاعر، التحكم في الانفعالات، سعة الصدر والتسامح، تحمل الضغوط بأشكالها، تنمية قوة الإرادة والقدرة على التكيف، تقدير مشاعر الآخرين، والقدرة على مواكبة التغيير.</p>
+                    <div class="bg-slate-800/60 p-5 rounded-2xl border-l-4 border-rose-500 shadow-md">
+                        <h3 class="font-black text-glow-rose text-lg mb-2 flex items-center gap-3"><span class="w-8 h-8 bg-rose-900/50 text-rose-300 rounded-lg flex justify-center items-center text-lg border border-rose-500/30">1</span> المهارات الانفعالية:</h3>
+                        <p class="text-sm text-slate-300 font-medium leading-relaxed">ضبط المشاعر، التحكم في الانفعالات، سعة الصدر والتسامح، تحمل الضغوط بأشكالها، تنمية قوة الإرادة والقدرة على التكيف، تقدير مشاعر الآخرين، والقدرة على مواكبة التغيير.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-2 h-full bg-blue-600 opacity-80"></div>
-                        <h3 class="font-bold text-slate-800 text-lg mb-2 flex items-center gap-2"><span class="w-7 h-7 bg-blue-100 text-blue-700 rounded-lg flex justify-center items-center text-sm font-black">2</span> المهارات الاجتماعية:</h3>
-                        <p class="text-sm text-slate-600 font-medium leading-relaxed pr-3">تحمل المسؤولية، احترام الذات، المشاركة في الأعمال الجماعية، القدرة على تكوين علاقات، اتخاذ القرارات السليمة، القدرة على التفاوض، أداء الأعمال المنزلية والأسرية، تقبل الاختلافات (جنس-لون-دين-ثقافة)، القدرة على التواصل.</p>
+                    <div class="bg-slate-800/60 p-5 rounded-2xl border-l-4 border-cyan-500 shadow-md">
+                        <h3 class="font-black text-glow-cyan text-lg mb-2 flex items-center gap-3"><span class="w-8 h-8 bg-cyan-900/50 text-cyan-300 rounded-lg flex justify-center items-center text-lg border border-cyan-500/30">2</span> المهارات الاجتماعية:</h3>
+                        <p class="text-sm text-slate-300 font-medium leading-relaxed">تحمل المسؤولية، احترام الذات، المشاركة في الأعمال الجماعية، القدرة على تكوين علاقات، اتخاذ القرارات السليمة، القدرة على التفاوض، أداء الأعمال المنزلية والأسرية، تقبل الاختلافات (جنس-لون-دين-ثقافة)، القدرة على التواصل.</p>
                     </div>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-2 h-full bg-emerald-600 opacity-80"></div>
-                        <h3 class="font-bold text-slate-800 text-lg mb-2 flex items-center gap-2"><span class="w-7 h-7 bg-emerald-100 text-emerald-700 rounded-lg flex justify-center items-center text-sm font-black">3</span> المهارات العقلية:</h3>
-                        <p class="text-sm text-slate-600 font-medium leading-relaxed pr-3">القدرة على التفكير الناقد، معرفة أفضل طرق استخدام الموارد، التعلم الذاتي والمستمر، التنبؤ بالأحداث، القدرة على التخطيط السليم، البحث والتجريب، إدراك العلاقات، والقدرة على الإبداع والابتكار.</p>
+                    <div class="bg-slate-800/60 p-5 rounded-2xl border-l-4 border-emerald-500 shadow-md">
+                        <h3 class="font-black text-glow-emerald text-lg mb-2 flex items-center gap-3"><span class="w-8 h-8 bg-emerald-900/50 text-emerald-300 rounded-lg flex justify-center items-center text-lg border border-emerald-500/30">3</span> المهارات العقلية:</h3>
+                        <p class="text-sm text-slate-300 font-medium leading-relaxed">القدرة على التفكير الناقد، معرفة أفضل طرق استخدام الموارد، التعلم الذاتي والمستمر، التنبؤ بالأحداث، القدرة على التخطيط السليم، البحث والتجريب، إدراك العلاقات، والقدرة على الإبداع والابتكار.</p>
                     </div>
                 </div>
             </div>
 
             <!-- 3. تصنيف المؤلف -->
-            <div class="clean-card">
-                <h2 class="section-title">
-                    <span class="text-3xl bg-amber-50 p-2.5 rounded-xl border border-amber-100 shadow-sm">✍️</span> 
+            <div class="epic-card">
+                <h2 class="epic-title">
+                    <span class="text-3xl bg-slate-800/80 p-2.5 rounded-xl border border-cyan-500/30 shadow-[0_0_15px_rgba(34,211,238,0.3)]">✍️</span> 
                     تصنيف المؤلف (شكل 1)
-                    <span class="page-tag">ص 28-29</span>
+                    <span class="rune-tag">ص 28-29</span>
                 </h2>
-                <p class="detailed-text mb-6">
+                <p class="epic-text mb-6">
                     عرض المؤلف المهارات الحياتية الأساسية في شكل (1) على هيئة خارطة ذهنية تتمحور حول "المهارات الحياتية" وتشمل:
                 </p>
                 <div class="grid grid-cols-2 gap-3 text-center text-sm font-bold">
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">التفكير الإبداعي</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">التفكير الناقد</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">الاتصال والتواصل</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">التعامل مع الآخرين</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">حل المشكلات</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">اتخاذ القرار</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">إدارة الوقت</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">التعامل مع الضغوطات</div>
-                    <div class="bg-slate-800 text-amber-100 p-4 rounded-xl shadow-md col-span-2 text-base">الثقة بالنفس والوعي بالذات</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">التعامل مع العواطف</div>
-                    <div class="bg-slate-50 text-slate-800 p-4 rounded-xl border border-slate-200 shadow-sm hover:bg-amber-50 transition">التعامل مع الصحة</div>
-                    <div class="bg-amber-100 text-amber-900 border border-amber-200 p-4 rounded-xl shadow-sm col-span-2 text-base">التوعية الغذائية</div>
+                    <div class="bg-slate-800/80 text-cyan-200 p-4 rounded-xl border border-cyan-500/20 shadow-inner hover:bg-cyan-900/50 transition">التفكير الإبداعي</div>
+                    <div class="bg-slate-800/80 text-cyan-200 p-4 rounded-xl border border-cyan-500/20 shadow-inner hover:bg-cyan-900/50 transition">التفكير الناقد</div>
+                    <div class="bg-slate-800/80 text-purple-200 p-4 rounded-xl border border-purple-500/20 shadow-inner hover:bg-purple-900/50 transition">الاتصال والتواصل</div>
+                    <div class="bg-slate-800/80 text-purple-200 p-4 rounded-xl border border-purple-500/20 shadow-inner hover:bg-purple-900/50 transition">التعامل مع الآخرين</div>
+                    <div class="bg-slate-800/80 text-emerald-200 p-4 rounded-xl border border-emerald-500/20 shadow-inner hover:bg-emerald-900/50 transition">حل المشكلات</div>
+                    <div class="bg-slate-800/80 text-emerald-200 p-4 rounded-xl border border-emerald-500/20 shadow-inner hover:bg-emerald-900/50 transition">اتخاذ القرار</div>
+                    <div class="bg-slate-800/80 text-orange-200 p-4 rounded-xl border border-orange-500/20 shadow-inner hover:bg-orange-900/50 transition">إدارة الوقت</div>
+                    <div class="bg-slate-800/80 text-orange-200 p-4 rounded-xl border border-orange-500/20 shadow-inner hover:bg-orange-900/50 transition">التعامل مع الضغوطات</div>
+                    <div class="bg-gradient-to-r from-purple-900/80 to-cyan-900/80 text-white p-4 rounded-xl border border-cyan-400/40 shadow-[0_0_15px_rgba(34,211,238,0.2)] col-span-2 text-base font-black">الثقة بالنفس والوعي بالذات</div>
+                    <div class="bg-slate-800/80 text-rose-200 p-4 rounded-xl border border-rose-500/20 shadow-inner hover:bg-rose-900/50 transition">التعامل مع العواطف</div>
+                    <div class="bg-slate-800/80 text-teal-200 p-4 rounded-xl border border-teal-500/20 shadow-inner hover:bg-teal-900/50 transition">التعامل مع الصحة</div>
+                    <div class="bg-amber-900/40 text-amber-300 border border-amber-500/40 p-4 rounded-xl shadow-sm col-span-2 text-base font-black">التوعية الغذائية</div>
                 </div>
             </div>
 
             <!-- 4. الأهمية -->
-            <div class="clean-card">
-                <h2 class="section-title">
-                    <span class="text-3xl bg-amber-50 p-2.5 rounded-xl border border-amber-100 shadow-sm">🌟</span> 
+            <div class="epic-card">
+                <h2 class="epic-title">
+                    <span class="text-3xl bg-slate-800/80 p-2.5 rounded-xl border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.3)]">🌟</span> 
                     أهمية المهارات الحياتية
-                    <span class="page-tag">ص 29-31</span>
+                    <span class="rune-tag">ص 29-31</span>
                 </h2>
-                <div class="bg-slate-800 text-amber-100 p-3 rounded-xl text-center text-sm font-bold mb-6 shadow-inner" style="font-family: 'Tajawal', sans-serif;">
+                <div class="bg-amber-900/30 text-amber-200 p-3 rounded-xl border border-amber-500/30 text-center font-bold mb-6 shadow-inner">
                     (المطلوب: أول 7 نقاط من قائمة المؤلف — ص 31)
                 </div>
 
                 <div class="space-y-4">
-                    <div class="flex items-start gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center shrink-0 border border-amber-200">1</div>
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-4 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-900/50 text-cyan-300 font-black text-lg flex items-center justify-center shrink-0 border border-cyan-500/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">1</div>
                         <div>
-                            <strong class="text-slate-900 text-base font-bold">إدراك الذات والثقة بالنفس:</strong>
-                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">تساعد على إدراك الذات وتحقيق الثقة بالنفس.</p>
+                            <strong class="text-white text-base font-bold">إدراك الذات والثقة بالنفس</strong>
+                            <p class="text-slate-400 text-sm mt-1">تساعد على إدراك الذات وتحقيق الثقة بالنفس.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center shrink-0 border border-amber-200">2</div>
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-4 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-900/50 text-cyan-300 font-black text-lg flex items-center justify-center shrink-0 border border-cyan-500/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">2</div>
                         <div>
-                            <strong class="text-slate-900 text-base font-bold">تحمل المسؤولية:</strong>
-                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">تكسب الفرد القدرة على تحمل المسؤولية.</p>
+                            <strong class="text-white text-base font-bold">تحمل المسؤولية</strong>
+                            <p class="text-slate-400 text-sm mt-1">تكسب الفرد القدرة على تحمل المسؤولية.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center shrink-0 border border-amber-200">3</div>
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-4 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-900/50 text-cyan-300 font-black text-lg flex items-center justify-center shrink-0 border border-cyan-500/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">3</div>
                         <div>
-                            <strong class="text-slate-900 text-base font-bold">الاستقلال الذاتي:</strong>
-                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">تساعد على تحقيق قدر كبير من الاستقلال الذاتي.</p>
+                            <strong class="text-white text-base font-bold">الاستقلال الذاتي</strong>
+                            <p class="text-slate-400 text-sm mt-1">تساعد على تحقيق قدر كبير من الاستقلال الذاتي.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center shrink-0 border border-amber-200">4</div>
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-4 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-900/50 text-cyan-300 font-black text-lg flex items-center justify-center shrink-0 border border-cyan-500/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">4</div>
                         <div>
-                            <strong class="text-slate-900 text-base font-bold">التعبير عن المشاعر:</strong>
-                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">تنمي القدرة على التعبير عن المشاعر وتهذيبها.</p>
+                            <strong class="text-white text-base font-bold">التعبير عن المشاعر</strong>
+                            <p class="text-slate-400 text-sm mt-1">تنمي القدرة على التعبير عن المشاعر وتهذيبها.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center shrink-0 border border-amber-200">5</div>
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-4 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-900/50 text-cyan-300 font-black text-lg flex items-center justify-center shrink-0 border border-cyan-500/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">5</div>
                         <div>
-                            <strong class="text-slate-900 text-base font-bold">التحكم الانفعالي:</strong>
-                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">تكسب الفرد القدرة على التحكم الانفعالي.</p>
+                            <strong class="text-white text-base font-bold">التحكم الانفعالي</strong>
+                            <p class="text-slate-400 text-sm mt-1">تكسب الفرد القدرة على التحكم الانفعالي.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center shrink-0 border border-amber-200">6</div>
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-4 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-900/50 text-cyan-300 font-black text-lg flex items-center justify-center shrink-0 border border-cyan-500/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">6</div>
                         <div>
-                            <strong class="text-slate-900 text-base font-bold">التفاعل الاجتماعي:</strong>
-                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">تنمي التفاعل الاجتماعي والاتصال الجيد مع الآخرين.</p>
+                            <strong class="text-white text-base font-bold">التفاعل الاجتماعي</strong>
+                            <p class="text-slate-400 text-sm mt-1">تنمي التفاعل الاجتماعي والاتصال الجيد مع الآخرين.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center shrink-0 border border-amber-200">7</div>
+                    <div class="flex items-center gap-4 bg-slate-800/50 p-4 rounded-2xl border border-slate-700 hover:border-cyan-500/50 transition">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-900/50 text-cyan-300 font-black text-lg flex items-center justify-center shrink-0 border border-cyan-500/30 shadow-[0_0_10px_rgba(34,211,238,0.2)]">7</div>
                         <div>
-                            <strong class="text-slate-900 text-base font-bold">مواجهة مشكلات الحياة:</strong>
-                            <p class="text-slate-600 text-sm mt-1 leading-relaxed">تنمي القدرة على مواجهة مشكلات الحياة.</p>
+                            <strong class="text-white text-base font-bold">مواجهة مشكلات الحياة</strong>
+                            <p class="text-slate-400 text-sm mt-1">تنمي القدرة على مواجهة مشكلات الحياة.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- 5. الخصائص والعوامل -->
-            <div class="clean-card">
-                <h2 class="section-title">
-                    <span class="text-3xl bg-amber-50 p-2.5 rounded-xl border border-amber-100 shadow-sm">✨</span> 
+            <div class="epic-card">
+                <h2 class="epic-title">
+                    <span class="text-3xl bg-slate-800/80 p-2.5 rounded-xl border border-purple-500/30 shadow-[0_0_15px_rgba(192,132,252,0.3)]">✨</span> 
                     الخصائص والعوامل
-                    <span class="page-tag">ص 32-33</span>
+                    <span class="rune-tag">ص 32-33</span>
                 </h2>
 
-                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 mb-6 shadow-inner">
-                    <h3 class="font-bold text-xl text-slate-900 mb-2 font-serif">أولاً: خصائص المهارات (ص 32)</h3>
-                    <p class="text-xs text-amber-700 font-bold mb-4 bg-amber-100 px-3 py-1.5 rounded-md inline-block">وفق فريد عمران، فايز أبو حجر، إيهاب عيسى (2002):</p>
-                    <ul class="space-y-4 text-slate-700 font-medium text-sm">
-                        <li class="flex gap-3"><span class="text-amber-600 text-lg leading-none">▪</span> <span><strong class="text-slate-900">التنوع والشمولية:</strong> تشمل الجوانب المادية وغير المادية المرتبطة بأساليب إشباع الفرد لاحتياجاته وتفاعله مع الحياة.</span></li>
-                        <li class="flex gap-3"><span class="text-amber-600 text-lg leading-none">▪</span> <span><strong class="text-slate-900">الاختلاف عبر المجتمعات والأزمنة:</strong> تختلف من مجتمع لآخر تبعاً لطبيعة المجتمع وتقدمه، ومن فترة زمنية لأخرى.</span></li>
-                        <li class="flex gap-3"><span class="text-amber-600 text-lg leading-none">▪</span> <span><strong class="text-slate-900">الطبيعة التبادلية:</strong> تعتمد على الطبيعة التبادلية بين الفرد والمجتمع ودرجة تأثير كل منهما على الآخر.</span></li>
-                        <li class="flex gap-3"><span class="text-amber-600 text-lg leading-none">▪</span> <span><strong class="text-slate-900">التفاعل الناجح مع الحياة:</strong> تستهدف مساعدة الفرد على التفاعل الناجح مع الحياة وتطوير أساليب معايشته.</span></li>
-                        <li class="flex gap-3"><span class="text-amber-600 text-lg leading-none">▪</span> <span><strong class="text-slate-900">عملية فيزيائية عقلية عاطفية:</strong> تتطلب قدراً من التدريب والاستخدام، وتتطلب معرفة، ويمكن استخدامها بمواقف متعددة.</span></li>
+                <div class="bg-slate-900/50 p-6 rounded-3xl border border-purple-500/30 mb-8 shadow-inner relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl"></div>
+                    <h3 class="font-black text-xl text-glow-purple mb-4 font-serif">أولاً: خصائص المهارات (ص 32)</h3>
+                    <p class="text-xs text-purple-300 font-bold mb-5 bg-purple-900/40 border border-purple-500/30 px-3 py-1.5 rounded-lg inline-block">وفق فريد عمران، فايز أبو حجر، إيهاب عيسى (2002):</p>
+                    <ul class="space-y-4 text-slate-300 font-medium text-sm relative z-10">
+                        <li class="flex gap-3"><span class="text-purple-400 text-xl leading-none">✦</span> <span><strong class="text-white">التنوع والشمولية:</strong> تشمل الجوانب المادية وغير المادية المرتبطة بأساليب إشباع الفرد لاحتياجاته وتفاعله مع الحياة.</span></li>
+                        <li class="flex gap-3"><span class="text-purple-400 text-xl leading-none">✦</span> <span><strong class="text-white">الاختلاف عبر المجتمعات والأزمنة:</strong> تختلف من مجتمع لآخر تبعاً لطبيعة المجتمع وتقدمه، ومن فترة زمنية لأخرى.</span></li>
+                        <li class="flex gap-3"><span class="text-purple-400 text-xl leading-none">✦</span> <span><strong class="text-white">الطبيعة التبادلية:</strong> تعتمد على الطبيعة التبادلية بين الفرد والمجتمع ودرجة تأثير كل منهما على الآخر.</span></li>
+                        <li class="flex gap-3"><span class="text-purple-400 text-xl leading-none">✦</span> <span><strong class="text-white">التفاعل الناجح مع الحياة:</strong> تستهدف مساعدة الفرد على التفاعل الناجح مع الحياة وتطوير أساليب معايشته.</span></li>
+                        <li class="flex gap-3"><span class="text-purple-400 text-xl leading-none">✦</span> <span><strong class="text-white">عملية فيزيائية عقلية عاطفية:</strong> تتطلب قدراً من التدريب والاستخدام، وتتطلب معرفة، ويمكن استخدامها بمواقف متعددة.</span></li>
                     </ul>
                 </div>
 
-                <div class="bg-amber-50/80 p-6 rounded-3xl border border-amber-200">
-                    <h3 class="font-bold text-xl text-amber-900 mb-2 font-serif">ثانياً: العوامل المؤثرة (ص 33)</h3>
-                    <p class="text-xs text-amber-800 font-bold mb-5 bg-amber-200/50 px-3 py-1.5 rounded-md inline-block">عوامل تؤثر في اكتساب المهارة أو إعاقتها:</p>
-                    <div class="grid grid-cols-2 gap-4 text-center text-sm font-bold">
-                        <div class="bg-white text-slate-800 p-4 rounded-2xl border border-amber-100 shadow-sm relative overflow-hidden group">
-                            <div class="absolute top-0 right-0 bg-slate-800 text-white w-8 h-8 rounded-bl-xl flex items-center justify-center font-black text-sm">1</div>
-                            <div class="mt-4 text-amber-900 font-black">العلاقات المدعمة</div>
-                            <p class="text-[11px] font-medium mt-2 text-slate-600 leading-tight">وجودها يجعل الفرد يرصد المهارة أو يهملها</p>
+                <div class="bg-slate-900/50 p-6 rounded-3xl border border-cyan-500/30 shadow-inner relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl"></div>
+                    <h3 class="font-black text-xl text-glow-cyan mb-4 font-serif">ثانياً: العوامل المؤثرة (ص 33)</h3>
+                    <p class="text-xs text-cyan-300 font-bold mb-5 bg-cyan-900/40 border border-cyan-500/30 px-3 py-1.5 rounded-lg inline-block">عوامل تؤثر في اكتساب المهارة أو إعاقتها:</p>
+                    <div class="grid grid-cols-2 gap-4 text-center text-sm font-bold relative z-10">
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-cyan-500/20 hover:border-cyan-400/50 transition">
+                            <div class="text-cyan-400 font-black text-lg mb-1">1</div>
+                            <div class="text-white">العلاقات المدعمة</div>
+                            <p class="text-xs mt-2 text-slate-400">تجعل الفرد يرصد المهارة</p>
                         </div>
-                        <div class="bg-white text-slate-800 p-4 rounded-2xl border border-amber-100 shadow-sm relative overflow-hidden group">
-                            <div class="absolute top-0 right-0 bg-slate-800 text-white w-8 h-8 rounded-bl-xl flex items-center justify-center font-black text-sm">2</div>
-                            <div class="mt-4 text-amber-900 font-black">نماذج التقويم</div>
-                            <p class="text-[11px] font-medium mt-2 text-slate-600 leading-tight">قوة أو ضعف المهارة يتأثر بنماذج تقويم أدائها</p>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-cyan-500/20 hover:border-cyan-400/50 transition">
+                            <div class="text-cyan-400 font-black text-lg mb-1">2</div>
+                            <div class="text-white">نماذج التقويم</div>
+                            <p class="text-xs mt-2 text-slate-400">يتأثر بها قوة المهارة</p>
                         </div>
-                        <div class="bg-white text-slate-800 p-4 rounded-2xl border border-amber-100 shadow-sm relative overflow-hidden group">
-                            <div class="absolute top-0 right-0 bg-slate-800 text-white w-8 h-8 rounded-bl-xl flex items-center justify-center font-black text-sm">3</div>
-                            <div class="mt-4 text-amber-900 font-black">تتابع الإثابة</div>
-                            <p class="text-[11px] font-medium mt-2 text-slate-600 leading-tight">الحصول على التشجيع أساسي لاكتساب المهارة</p>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-cyan-500/20 hover:border-cyan-400/50 transition">
+                            <div class="text-cyan-400 font-black text-lg mb-1">3</div>
+                            <div class="text-white">تتابع الإثابة</div>
+                            <p class="text-xs mt-2 text-slate-400">التشجيع أساسي للاكتساب</p>
                         </div>
-                        <div class="bg-white text-slate-800 p-4 rounded-2xl border border-amber-100 shadow-sm relative overflow-hidden group">
-                            <div class="absolute top-0 right-0 bg-slate-800 text-white w-8 h-8 rounded-bl-xl flex items-center justify-center font-black text-sm">4</div>
-                            <div class="mt-4 text-amber-900 font-black">التعليمات</div>
-                            <p class="text-[11px] font-medium mt-2 text-slate-600 leading-tight">معظم تعليمات أداء المهارات مكتسبة من البيت</p>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-cyan-500/20 hover:border-cyan-400/50 transition">
+                            <div class="text-cyan-400 font-black text-lg mb-1">4</div>
+                            <div class="text-white">التعليمات</div>
+                            <p class="text-xs mt-2 text-slate-400">مكتسبة غالباً من البيت</p>
                         </div>
-                        <div class="bg-white text-slate-800 p-5 rounded-2xl border border-amber-100 shadow-sm relative overflow-hidden group col-span-2 flex items-center justify-between text-right gap-3">
-                            <div class="absolute top-0 right-0 bg-slate-800 text-white w-10 h-10 rounded-bl-2xl flex items-center justify-center font-black text-base">5</div>
-                            <div class="pr-8">
-                                <div class="text-amber-900 font-black text-base">إتاحة الفرصة</div>
-                                <p class="text-xs font-medium mt-1 text-slate-600">عندما يعتمد الفرد على الآخرين يصعب اكتسابها</p>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-cyan-500/20 col-span-2 flex items-center text-right gap-4 hover:border-cyan-400/50 transition">
+                            <div class="w-10 h-10 bg-cyan-900/50 text-cyan-300 rounded-xl flex items-center justify-center text-lg shrink-0 border border-cyan-500/30">5</div>
+                            <div>
+                                <div class="text-white text-base">إتاحة الفرصة</div>
+                                <p class="text-xs mt-1 text-slate-400">الاعتماد على الآخرين يعيق الاكتساب</p>
                             </div>
                         </div>
-                        <div class="bg-white text-slate-800 p-5 rounded-2xl border border-amber-100 shadow-sm relative overflow-hidden group col-span-2 flex items-center justify-between text-right gap-3">
-                            <div class="absolute top-0 right-0 bg-slate-800 text-white w-10 h-10 rounded-bl-2xl flex items-center justify-center font-black text-base">6</div>
-                            <div class="pr-8">
-                                <div class="text-amber-900 font-black text-base">التفاعل مع الأقران</div>
-                                <p class="text-xs font-medium mt-1 text-slate-600">قد يكون تعلم المهارات من الأقران مفيداً حسب طبيعتهم</p>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-cyan-500/20 col-span-2 flex items-center text-right gap-4 hover:border-cyan-400/50 transition">
+                            <div class="w-10 h-10 bg-cyan-900/50 text-cyan-300 rounded-xl flex items-center justify-center text-lg shrink-0 border border-cyan-500/30">6</div>
+                            <div>
+                                <div class="text-white text-base">التفاعل مع الأقران</div>
+                                <p class="text-xs mt-1 text-slate-400">قد يكون مفيداً حسب طبيعتهم</p>
                             </div>
                         </div>
                     </div>
@@ -463,212 +479,218 @@
             </div>
 
             <!-- 6. خطوات وجوانب -->
-            <div class="clean-card">
-                <h2 class="section-title">
-                    <span class="text-3xl bg-amber-50 p-2.5 rounded-xl border border-amber-100 shadow-sm">🪜</span> 
+            <div class="epic-card">
+                <h2 class="epic-title">
+                    <span class="text-3xl bg-slate-800/80 p-2.5 rounded-xl border border-amber-500/30 shadow-[0_0_15px_rgba(251,191,36,0.3)]">🪜</span> 
                     خطوات وجوانب التنمية
-                    <span class="page-tag">ص 34-36</span>
+                    <span class="rune-tag">ص 34-36</span>
                 </h2>
 
-                <h3 class="font-bold text-xl text-slate-900 mb-2 font-serif">خطوات تنمية المهارة (المؤلف، ص 35):</h3>
-                <div class="space-y-4 relative before:absolute before:right-6 before:top-4 before:bottom-4 before:w-1 before:bg-slate-200 mb-10 mt-6 ml-2">
+                <h3 class="font-black text-xl text-white mb-4 font-serif">خطوات تنمية المهارة (المؤلف، ص 35):</h3>
+                <div class="space-y-4 mb-10 relative before:absolute before:right-6 before:top-4 before:bottom-4 before:w-0.5 before:bg-cyan-500/30 ml-2 mt-6">
                     <div class="flex gap-5 relative z-10">
-                        <div class="w-12 h-12 rounded-full bg-slate-800 text-amber-400 font-black flex items-center justify-center shrink-0 shadow-lg border-4 border-white text-lg">1</div>
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-1">
-                            <h4 class="font-bold text-slate-900 text-base">التأكد من نقص المهارة والحاجة إليها</h4>
-                            <p class="text-sm text-slate-600 mt-2 font-medium leading-relaxed">من خلال الزيارات الميدانية والحديث مع الأفراد ومعرفة ما يفضلونه بأنه ضروري لهم.</p>
+                        <div class="w-12 h-12 rounded-full bg-slate-900 text-cyan-400 font-black flex items-center justify-center shrink-0 border border-cyan-500 shadow-[0_0_15px_rgba(34,211,238,0.4)] text-lg">I</div>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700 flex-1 hover:border-cyan-500/50 transition">
+                            <h4 class="font-bold text-white text-base">نقص المهارة والحاجة إليها</h4>
+                            <p class="text-sm text-slate-400 mt-1">من خلال الزيارات الميدانية والحديث مع الأفراد.</p>
                         </div>
                     </div>
                     <div class="flex gap-5 relative z-10">
-                        <div class="w-12 h-12 rounded-full bg-slate-800 text-amber-400 font-black flex items-center justify-center shrink-0 shadow-lg border-4 border-white text-lg">2</div>
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-1">
-                            <h4 class="font-bold text-slate-900 text-base">الزيارة البحثية للتأكد من الفهم</h4>
-                            <p class="text-sm text-slate-600 mt-2 font-medium leading-relaxed">للتأكد من فهم الأفراد لمعنى المهارة وطبيعتها وأهميتها وكيف تؤدى وتحديد خطواتها.</p>
+                        <div class="w-12 h-12 rounded-full bg-slate-900 text-cyan-400 font-black flex items-center justify-center shrink-0 border border-cyan-500 shadow-[0_0_15px_rgba(34,211,238,0.4)] text-lg">II</div>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700 flex-1 hover:border-cyan-500/50 transition">
+                            <h4 class="font-bold text-white text-base">الزيارة البحثية</h4>
+                            <p class="text-sm text-slate-400 mt-1">للتأكد من فهم الأفراد لمعنى المهارة وكيف تؤدى.</p>
                         </div>
                     </div>
                     <div class="flex gap-5 relative z-10">
-                        <div class="w-12 h-12 rounded-full bg-slate-800 text-amber-400 font-black flex items-center justify-center shrink-0 shadow-lg border-4 border-white text-lg">3</div>
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-1">
-                            <h4 class="font-bold text-slate-900 text-base">تهيئة الأفراد وإعداد مواقف التدريب</h4>
-                            <p class="text-sm text-slate-600 mt-2 font-medium leading-relaxed">تهيئة الأفراد وتدريبهم على ممارسة المهارة خلال المواقف لفترة كافية لاكتسابها.</p>
+                        <div class="w-12 h-12 rounded-full bg-slate-900 text-cyan-400 font-black flex items-center justify-center shrink-0 border border-cyan-500 shadow-[0_0_15px_rgba(34,211,238,0.4)] text-lg">III</div>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700 flex-1 hover:border-cyan-500/50 transition">
+                            <h4 class="font-bold text-white text-base">تهيئة وإعداد مواقف التدريب</h4>
+                            <p class="text-sm text-slate-400 mt-1">تدريبهم خلال المواقف لفترة كافية لاكتسابها.</p>
                         </div>
                     </div>
                     <div class="flex gap-5 relative z-10">
-                        <div class="w-12 h-12 rounded-full bg-slate-800 text-amber-400 font-black flex items-center justify-center shrink-0 shadow-lg border-4 border-white text-lg">4</div>
-                        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex-1">
-                            <h4 class="font-bold text-slate-900 text-base">التأكد من الاكتساب</h4>
-                            <p class="text-sm text-slate-600 mt-2 font-medium leading-relaxed">عبر قيامهم بممارستها خلال مواقف مختلفة للتأكد من انتقال أثر التعلم.</p>
+                        <div class="w-12 h-12 rounded-full bg-slate-900 text-cyan-400 font-black flex items-center justify-center shrink-0 border border-cyan-500 shadow-[0_0_15px_rgba(34,211,238,0.4)] text-lg">IV</div>
+                        <div class="bg-slate-800/60 p-4 rounded-2xl border border-slate-700 flex-1 hover:border-cyan-500/50 transition">
+                            <h4 class="font-bold text-white text-base">التأكد من الاكتساب</h4>
+                            <p class="text-sm text-slate-400 mt-1">عبر ممارستها في مواقف مختلفة لانتقال الأثر.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-800 border border-slate-700 rounded-3xl p-6 mb-10 shadow-lg">
-                    <h3 class="font-bold text-amber-400 mb-5 text-center text-xl font-serif">مراحل جابر عبد الحميد (1983):</h3>
-                    <div class="flex gap-3 text-sm font-bold text-center">
-                        <div class="flex-1 bg-slate-700/50 rounded-2xl py-4 border border-slate-600 text-white shadow-sm hover:bg-slate-700 transition">1. التقديم</div>
-                        <div class="flex-1 bg-slate-700/50 rounded-2xl py-4 border border-slate-600 text-white shadow-sm hover:bg-slate-700 transition">2. الإنماء</div>
-                        <div class="flex-1 bg-slate-700/50 rounded-2xl py-4 border border-slate-600 text-white shadow-sm hover:bg-slate-700 transition">3. التقويم</div>
+                <div class="bg-slate-900/80 rounded-3xl p-6 mb-10 border border-purple-500/40 text-center shadow-[0_0_20px_rgba(192,132,252,0.2)]">
+                    <h3 class="font-black text-xl mb-4 text-glow-purple font-serif">مراحل جابر عبد الحميد (1983):</h3>
+                    <div class="flex gap-3 text-sm font-bold text-purple-200">
+                        <div class="flex-1 bg-purple-900/30 rounded-xl py-3 border border-purple-500/30">1. التقديم</div>
+                        <div class="flex-1 bg-purple-900/30 rounded-xl py-3 border border-purple-500/30">2. الإنماء</div>
+                        <div class="flex-1 bg-purple-900/30 rounded-xl py-3 border border-purple-500/30">3. التقويم</div>
                     </div>
                 </div>
 
-                <h3 class="font-bold text-xl text-slate-900 mb-4 font-serif">جوانب المهارات الحياتية (ص 36) — بالترتيب:</h3>
+                <h3 class="font-black text-xl text-white mb-4 font-serif">جوانب المهارات الحياتية (ص 36):</h3>
                 <div class="grid gap-4">
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-amber-300 transition">
-                        <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-3xl shrink-0 border border-amber-100 shadow-inner">🧠</div>
+                    <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-600 flex items-center gap-4 hover:border-amber-500/50 transition">
+                        <div class="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center text-3xl shrink-0 border border-amber-500/30 shadow-[0_0_10px_rgba(251,191,36,0.2)]">🧠</div>
                         <div>
-                            <strong class="text-slate-900 text-lg block mb-1">1. الجانب المعرفي:</strong>
-                            <p class="text-sm text-slate-600 font-medium leading-relaxed">عندما يتعلم الفرد مهارة ما فلابد أن يكون ملماً بجميع الجوانب المعرفية المتصلة بها (المعلومات والمفاهيم)، فالمهارة لا تعتبر نشاطاً حركياً فقط.</p>
+                            <strong class="text-amber-300 text-lg block font-bold">1. الجانب المعرفي</strong>
+                            <p class="text-sm text-slate-400 mt-1">الإلمام بالمعلومات والمفاهيم المتصلة بالمهارة.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-amber-300 transition">
-                        <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-3xl shrink-0 border border-amber-100 shadow-inner">🏃‍♂️</div>
+                    <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-600 flex items-center gap-4 hover:border-amber-500/50 transition">
+                        <div class="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center text-3xl shrink-0 border border-amber-500/30 shadow-[0_0_10px_rgba(251,191,36,0.2)]">🏃‍♂️</div>
                         <div>
-                            <strong class="text-slate-900 text-lg block mb-1">2. الجانب المهاري (السلوكي):</strong>
-                            <p class="text-sm text-slate-600 font-medium leading-relaxed">بعد المعرفة، يأتي الجانب الثاني وهو كيفية أداء هذه المهارات بطريقة عملية — الأداء الفعلي والتطبيق في الواقع.</p>
+                            <strong class="text-amber-300 text-lg block font-bold">2. الجانب المهاري (السلوكي)</strong>
+                            <p class="text-sm text-slate-400 mt-1">كيفية الأداء الفعلي والتطبيق العملي في الواقع.</p>
                         </div>
                     </div>
-                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-4 hover:border-amber-300 transition">
-                        <div class="w-14 h-14 bg-amber-50 rounded-xl flex items-center justify-center text-3xl shrink-0 border border-amber-100 shadow-inner">❤️</div>
+                    <div class="bg-slate-800/50 p-5 rounded-2xl border border-slate-600 flex items-center gap-4 hover:border-amber-500/50 transition">
+                        <div class="w-14 h-14 bg-slate-900 rounded-xl flex items-center justify-center text-3xl shrink-0 border border-amber-500/30 shadow-[0_0_10px_rgba(251,191,36,0.2)]">❤️</div>
                         <div>
-                            <strong class="text-slate-900 text-lg block mb-1">3. الجانب الانفعالي (الوجداني):</strong>
-                            <p class="text-sm text-slate-600 font-medium leading-relaxed">وهو من أهم محددات السلوك الإنساني ومن جوانب التعلم الأساسية التي لا يمكن أن نهملها، ويتعلق بالاتجاهات والقيم والوجدانيات.</p>
+                            <strong class="text-amber-300 text-lg block font-bold">3. الجانب الانفعالي (الوجداني)</strong>
+                            <p class="text-sm text-slate-400 mt-1">يتعلق بالاتجاهات والقيم (من أهم محددات السلوك).</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- 7. دور الأسرة والمعيقات -->
-            <div class="clean-card mb-10">
-                <h2 class="section-title">
-                    <span class="text-3xl bg-amber-50 p-2.5 rounded-xl border border-amber-100 shadow-sm">🏡</span> 
+            <div class="epic-card mb-10">
+                <h2 class="epic-title">
+                    <span class="text-3xl bg-slate-800/80 p-2.5 rounded-xl border border-cyan-500/30 shadow-[0_0_15px_rgba(34,211,238,0.3)]">🏡</span> 
                     دور الأسرة والمعيقات
-                    <span class="page-tag">ص 36-37</span>
+                    <span class="rune-tag">ص 36-37</span>
                 </h2>
 
-                <div class="bg-emerald-50/80 p-6 rounded-3xl border border-emerald-200 mb-6 shadow-sm">
-                    <h3 class="font-bold text-emerald-900 text-lg mb-5 flex items-center gap-3 font-serif">
-                        <span class="bg-emerald-600 text-white w-8 h-8 flex items-center justify-center rounded-lg text-lg shadow-md">✓</span>
-                        اعتبارات الأسرة (ص 36-37):
+                <div class="bg-emerald-900/20 p-6 rounded-3xl border border-emerald-500/30 mb-6 shadow-inner relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"></div>
+                    <h3 class="font-black text-glow-emerald text-xl mb-5 flex items-center gap-3 font-serif relative z-10">
+                        <span class="bg-emerald-900/80 text-emerald-400 w-10 h-10 flex items-center justify-center rounded-xl text-xl shadow-[0_0_15px_rgba(16,185,129,0.4)] border border-emerald-500/50">✓</span>
+                        اعتبارات الأسرة:
                     </h3>
-                    <ul class="text-sm text-slate-800 space-y-4 font-medium">
-                        <li class="flex gap-3"><span class="text-emerald-700 font-black">1.</span><span class="leading-relaxed">أن تدرك أن <strong class="text-emerald-900 bg-emerald-100 px-1 rounded">الحماية الزائدة للطفل تضر بشخصيته</strong> أكثر مما تفيده.</span></li>
-                        <li class="flex gap-3"><span class="text-emerald-700 font-black">2.</span><span class="leading-relaxed">أن تشجع أبناءها على اتباع أسلوب <strong class="text-emerald-900 bg-emerald-100 px-1 rounded">التفاهم بالحوار والمناقشة.</strong></span></li>
-                        <li class="flex gap-3"><span class="text-emerald-700 font-black">3.</span><span class="leading-relaxed"><strong class="text-emerald-900 bg-emerald-100 px-1 rounded">تسليم عصا القيادة للابن</strong> مع متابعة خطواته عن قرب.</span></li>
-                        <li class="flex gap-3"><span class="text-emerald-700 font-black">4.</span><span class="leading-relaxed"><strong class="text-emerald-900 bg-emerald-100 px-1 rounded">قبول الفروق الفردية</strong> بين الأبناء.</span></li>
-                        <li class="flex gap-3"><span class="text-emerald-700 font-black">5.</span><span class="leading-relaxed">أن تشجع أبناءها على <strong class="text-emerald-900 bg-emerald-100 px-1 rounded">الاستقلالية في التفكير.</strong></span></li>
-                        <li class="flex gap-3"><span class="text-emerald-700 font-black">6.</span><span class="leading-relaxed">التخلي عن <strong class="text-emerald-900 bg-emerald-100 px-1 rounded">أساليب المعاملة غير السوية</strong> كالقسوة، السخرية، التهديد.</span></li>
+                    <ul class="text-sm text-slate-300 space-y-4 font-medium relative z-10">
+                        <li class="flex gap-3"><span class="text-emerald-400 font-black text-lg">✦</span><span class="leading-relaxed">أن تدرك أن <strong class="text-white bg-emerald-900/50 px-1.5 py-0.5 rounded border border-emerald-500/30">الحماية الزائدة للطفل تضر بشخصيته</strong> أكثر مما تفيده.</span></li>
+                        <li class="flex gap-3"><span class="text-emerald-400 font-black text-lg">✦</span><span class="leading-relaxed">تشجيع الأبناء على <strong class="text-white bg-emerald-900/50 px-1.5 py-0.5 rounded border border-emerald-500/30">التفاهم بالحوار والمناقشة.</strong></span></li>
+                        <li class="flex gap-3"><span class="text-emerald-400 font-black text-lg">✦</span><span class="leading-relaxed"><strong class="text-white bg-emerald-900/50 px-1.5 py-0.5 rounded border border-emerald-500/30">تسليم عصا القيادة للابن</strong> مع المتابعة.</span></li>
+                        <li class="flex gap-3"><span class="text-emerald-400 font-black text-lg">✦</span><span class="leading-relaxed"><strong class="text-white bg-emerald-900/50 px-1.5 py-0.5 rounded border border-emerald-500/30">قبول الفروق الفردية</strong> بين الأبناء.</span></li>
+                        <li class="flex gap-3"><span class="text-emerald-400 font-black text-lg">✦</span><span class="leading-relaxed">تشجيع <strong class="text-white bg-emerald-900/50 px-1.5 py-0.5 rounded border border-emerald-500/30">الاستقلالية في التفكير.</strong></span></li>
+                        <li class="flex gap-3"><span class="text-emerald-400 font-black text-lg">✦</span><span class="leading-relaxed">التخلي عن <strong class="text-white bg-emerald-900/50 px-1.5 py-0.5 rounded border border-emerald-500/30">المعاملة غير السوية</strong> كالقسوة والسخرية.</span></li>
                     </ul>
                 </div>
 
-                <div class="bg-rose-50/80 p-6 rounded-3xl border border-rose-200 shadow-sm">
-                    <h3 class="font-bold text-rose-900 text-lg mb-5 flex items-center gap-3 font-serif">
-                        <span class="bg-rose-600 text-white w-8 h-8 flex items-center justify-center rounded-lg text-lg shadow-md">✕</span>
-                        المعيقات والصعوبات (ص 37):
+                <div class="bg-rose-900/20 p-6 rounded-3xl border border-rose-500/30 shadow-inner relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-rose-500/10 rounded-full blur-3xl"></div>
+                    <h3 class="font-black text-glow-rose text-xl mb-5 flex items-center gap-3 font-serif relative z-10">
+                        <span class="bg-rose-900/80 text-rose-400 w-10 h-10 flex items-center justify-center rounded-xl text-xl shadow-[0_0_15px_rgba(239,68,68,0.4)] border border-rose-500/50">✕</span>
+                        المعيقات والصعوبات:
                     </h3>
-                    <ul class="text-sm text-slate-800 space-y-4 font-medium">
-                        <li class="flex gap-3"><span class="text-rose-700 font-black">1.</span><span class="leading-relaxed">عدم الاقتناع واستيعاب المهارات الحياتية.</span></li>
-                        <li class="flex gap-3"><span class="text-rose-700 font-black">2.</span><span class="leading-relaxed">ضآلة دور ومشاركة المتعلمين في تصميم الأنشطة وتنفيذها.</span></li>
-                        <li class="flex gap-3"><span class="text-rose-700 font-black">3.</span><span class="leading-relaxed">عدم تهيئة البيئة المدرسية لتطبيق المهارات الحياتية.</span></li>
-                        <li class="flex gap-3"><span class="text-rose-700 font-black">4.</span><span class="leading-relaxed">عدم إيلاء وسائل الإعلام الأهمية لدور المهارات الحياتية.</span></li>
-                        <li class="flex gap-3"><span class="text-rose-700 font-black">5.</span><span class="leading-relaxed">اكتظاظ حجرات الدراسة بالمتعلمين.</span></li>
-                        <li class="flex gap-3"><span class="text-rose-700 font-black">6.</span><span class="leading-relaxed">طبيعة المعلم وحالته الاقتصادية والاجتماعية ومن ثم النفسية.</span></li>
-                        <li class="flex gap-3"><span class="text-rose-700 font-black">7.</span><span class="leading-relaxed">ندرة الكتب والمراجع والدراسات المتخصصة.</span></li>
+                    <ul class="text-sm text-slate-300 space-y-3 font-medium relative z-10">
+                        <li class="flex gap-3"><span class="text-rose-500 font-black text-lg">✦</span><span>عدم الاقتناع واستيعاب المهارات الحياتية.</span></li>
+                        <li class="flex gap-3"><span class="text-rose-500 font-black text-lg">✦</span><span>ضآلة دور المتعلمين في تصميم الأنشطة.</span></li>
+                        <li class="flex gap-3"><span class="text-rose-500 font-black text-lg">✦</span><span>عدم تهيئة البيئة المدرسية لتطبيق المهارات.</span></li>
+                        <li class="flex gap-3"><span class="text-rose-500 font-black text-lg">✦</span><span>عدم إيلاء وسائل الإعلام الأهمية لها.</span></li>
+                        <li class="flex gap-3"><span class="text-rose-500 font-black text-lg">✦</span><span>اكتظاظ حجرات الدراسة بالمتعلمين.</span></li>
+                        <li class="flex gap-3"><span class="text-rose-500 font-black text-lg">✦</span><span>طبيعة المعلم وحالته الاقتصادية والنفسية.</span></li>
+                        <li class="flex gap-3"><span class="text-rose-500 font-black text-lg">✦</span><span>ندرة الكتب والمراجع والدراسات المتخصصة.</span></li>
                     </ul>
                 </div>
             </div>
 
         </div>
 
-        <!-- ====== قسم الاختبار ====== -->
-        <div id="view-quiz" class="hidden h-full flex-col fade-in">
+        <!-- ====== قسم الاختبار الأسطوري ====== -->
+        <div id="view-quiz" class="hidden h-full flex-col fade-in pt-4">
 
-            <!-- Quiz Header -->
-            <div class="bg-slate-900/90 backdrop-blur-xl rounded-[2rem] p-6 shadow-2xl border border-slate-700 mb-8 flex justify-between items-center relative overflow-hidden">
-                <div class="absolute -right-6 -top-6 w-32 h-32 bg-amber-500/20 rounded-full blur-3xl"></div>
-                
-                <div class="relative z-10 text-white">
-                    <p class="text-xs text-amber-400 font-bold mb-1 uppercase tracking-wider" style="font-family: 'Tajawal', sans-serif;">السؤال الحالي</p>
-                    <p class="text-3xl font-black text-white"><span id="q-counter">1</span><span class="text-lg text-slate-400 font-bold ml-1">/ 40</span></p>
+            <!-- Quiz Header HUD -->
+            <div class="flex justify-between items-center mb-8 px-2">
+                <div class="bg-slate-900/80 border border-cyan-500/40 shadow-[0_0_15px_rgba(34,211,238,0.2)] px-5 py-3 rounded-2xl flex gap-3 items-center backdrop-blur-md">
+                    <span class="text-2xl drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">🔮</span>
+                    <div>
+                        <p class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider">السؤال السحري</p>
+                        <p class="text-xl font-black text-white leading-none"><span id="q-counter">1</span><span class="text-sm text-slate-500">/40</span></p>
+                    </div>
                 </div>
-                <div class="relative z-10 text-left bg-slate-800/80 px-5 py-3 rounded-2xl border border-slate-600 shadow-inner">
-                    <p class="text-[10px] text-amber-400 font-bold mb-0.5 uppercase tracking-wider">النقاط</p>
-                    <p class="text-3xl font-black text-amber-500" id="score-display">0</p>
+                
+                <div class="bg-slate-900/80 border border-amber-500/40 shadow-[0_0_15px_rgba(251,191,36,0.2)] px-5 py-3 rounded-2xl flex gap-3 items-center backdrop-blur-md">
+                    <span class="text-2xl drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]">⚡</span>
+                    <div>
+                        <p class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">طاقة المعرفة</p>
+                        <p class="text-xl font-black text-amber-300 leading-none glow-text" id="score-display">0</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Progress Bar -->
-            <div class="w-full bg-slate-300/50 rounded-full h-2.5 mb-10 overflow-hidden shadow-inner border border-white/20">
-                <div class="bg-gradient-to-r from-amber-600 to-amber-400 h-2.5 rounded-full transition-all duration-500 ease-out relative" id="progress-bar" style="width: 2.5%">
-                    <div class="absolute inset-0 bg-white/20"></div>
+            <!-- Magical Progress Bar -->
+            <div class="w-full bg-slate-900/80 rounded-full h-3 mb-8 border border-slate-700 overflow-hidden shadow-inner relative">
+                <div class="bg-gradient-to-r from-purple-600 via-cyan-500 to-emerald-400 h-full rounded-full transition-all duration-500 ease-out shadow-[0_0_15px_rgba(34,211,238,0.6)] relative" id="progress-bar" style="width: 2.5%">
+                    <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
                 </div>
             </div>
 
             <!-- Question Area -->
-            <div class="flex-1 bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl border border-white mb-6">
-                <h2 id="question-text" class="text-xl md:text-2xl font-bold text-slate-900 leading-relaxed mb-8 text-center px-2 font-serif"></h2>
+            <div class="flex-1 epic-card !p-6 !border-cyan-500/30">
+                <h2 id="question-text" class="text-xl md:text-2xl font-bold text-white leading-relaxed mb-8 text-center px-2 font-serif text-shadow-md"></h2>
                 
                 <div id="options-container" class="space-y-4"></div>
                 
-                <div id="explanation-box" class="explanation-box">
-                    <div class="flex items-center gap-3 mb-4 border-b border-amber-200/50 pb-3">
-                        <span id="exp-icon" class="text-2xl bg-white w-12 h-12 flex items-center justify-center rounded-full shadow-sm border border-amber-100"></span>
-                        <h3 id="exp-title" class="font-black text-xl font-serif"></h3>
+                <div id="explanation-box" class="magic-box">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span id="exp-icon" class="text-3xl drop-shadow-lg"></span>
+                        <h3 id="exp-title" class="font-black text-2xl font-serif"></h3>
                     </div>
-                    <p id="exp-text" class="text-slate-700 text-sm font-medium leading-relaxed mb-6 bg-white/60 p-5 rounded-2xl border border-amber-100/50 shadow-inner"></p>
-                    <button onclick="nextQuestion()" class="w-full bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold py-4 rounded-2xl active:scale-95 transition-all shadow-xl shadow-slate-900/30 text-lg border border-slate-700">
-                        السؤال التالي
+                    <p id="exp-text" class="text-slate-300 text-sm font-medium leading-relaxed mb-6 bg-slate-900/50 p-5 rounded-xl border border-slate-700 shadow-inner"></p>
+                    <button onclick="nextQuestion()" class="w-full bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 text-white font-bold py-4 rounded-xl border border-cyan-400/50 shadow-[0_0_20px_rgba(192,132,252,0.4)] active:scale-95 transition-all text-lg tracking-wide">
+                        التالي ➜
                     </button>
                 </div>
             </div>
 
         </div>
 
-        <!-- شاشة النتيجة -->
-        <div id="result-screen" class="hidden h-full flex-col items-center justify-center pt-10 fade-in text-center relative">
+        <!-- شاشة النتيجة الأسطورية -->
+        <div id="result-screen" class="hidden h-full flex-col items-center justify-center pt-8 fade-in text-center relative z-10">
             
-            <div class="w-36 h-36 bg-gradient-to-br from-slate-800 to-slate-900 rounded-[3rem] flex items-center justify-center text-7xl mb-8 shadow-2xl shadow-slate-900/50 border-4 border-amber-400/30 transform rotate-3 relative">
-                <div class="absolute inset-0 border border-amber-400/50 rounded-[2.8rem] transform -rotate-6"></div>
-                🎓
+            <div class="w-40 h-40 bg-slate-900 rounded-[2.5rem] flex items-center justify-center text-7xl mb-6 shadow-[0_0_40px_rgba(251,191,36,0.6)] border border-amber-500/50 transform rotate-45 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-transparent"></div>
+                <div class="transform -rotate-45 drop-shadow-[0_0_15px_rgba(251,191,36,1)]">👑</div>
             </div>
-            <h2 class="text-4xl font-bold text-slate-900 mb-4 tracking-tight font-serif drop-shadow-sm text-shadow">انتهى الاختبار!</h2>
             
-            <div class="flex items-center gap-2 bg-slate-900/90 backdrop-blur px-5 py-2.5 rounded-full border border-slate-700 mb-10 shadow-lg">
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)]"></span>
-                <p class="text-amber-100 font-bold text-sm" style="font-family: 'Tajawal', sans-serif;">إعداد وتصميم: قيس جازي</p>
+            <h2 class="text-4xl font-black text-glow-gold mb-3 font-serif">إنجاز أسطوري!</h2>
+            
+            <div class="flex items-center gap-2 bg-slate-900/80 px-5 py-2.5 rounded-full border border-cyan-500/40 mb-8 shadow-[0_0_15px_rgba(34,211,238,0.2)] backdrop-blur-md">
+                <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]"></span>
+                <p class="text-cyan-100 font-bold text-sm tracking-widest">إعداد وتصميم: قيس جازي</p>
             </div>
 
-            <div class="bg-white/95 backdrop-blur-xl rounded-[2.5rem] p-10 shadow-2xl border border-amber-100 w-full max-w-sm mx-auto mb-10 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-40 h-40 bg-amber-100 rounded-full blur-3xl -z-10"></div>
-                <p class="text-slate-500 font-bold text-sm mb-4 uppercase tracking-widest" style="font-family: 'Tajawal', sans-serif;">النتيجة النهائية</p>
+            <div class="bg-slate-900/80 rounded-[2.5rem] p-10 border border-purple-500/40 shadow-[0_0_30px_rgba(192,132,252,0.3)] w-full max-w-sm mx-auto mb-10 backdrop-blur-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl -z-10"></div>
+                <p class="text-slate-400 font-bold text-sm mb-4 uppercase tracking-widest">طاقة المعرفة المكتسبة</p>
                 <div class="flex items-baseline justify-center gap-2">
-                    <span class="text-7xl font-black text-slate-900" id="final-score"></span>
-                    <span class="text-3xl font-bold text-slate-400">/40</span>
+                    <span class="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-br from-cyan-300 to-purple-400" style="filter: drop-shadow(0 0 10px rgba(34,211,238,0.5));" id="final-score"></span>
+                    <span class="text-4xl font-black text-slate-600">/40</span>
                 </div>
             </div>
 
-            <button onclick="location.reload()" class="w-full max-w-sm mx-auto bg-gradient-to-r from-slate-800 to-slate-900 hover:from-slate-900 hover:to-black text-amber-400 font-black py-5 rounded-2xl shadow-2xl shadow-slate-900/40 border border-slate-700 active:scale-95 transition-all text-xl">
-                إعادة الاختبار والتجربة
+            <button onclick="location.reload()" class="w-full max-w-sm mx-auto bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold py-5 rounded-2xl border border-amber-500/50 shadow-[0_0_20px_rgba(251,191,36,0.2)] active:scale-95 transition-all text-xl tracking-wide">
+                إعادة الرحلة 🌌
             </button>
         </div>
 
     </main>
 
-    <!-- ====== Bottom Navigation ====== -->
-    <nav class="bottom-nav">
-        <div id="nav-summary" onclick="switchTab('summary')" class="nav-item active flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            <span>الدرس</span>
+    <!-- ====== Magical HUD Bottom Navigation ====== -->
+    <nav class="hud-nav">
+        <div id="nav-summary" onclick="switchTab('summary')" class="hud-item active">
+            <span class="text-xl drop-shadow-md">📜</span> المخطوطة
         </div>
-        <div id="nav-quiz" onclick="switchTab('quiz')" class="nav-item flex items-center justify-center gap-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span>الاختبار (40)</span>
+        <div id="nav-quiz" onclick="switchTab('quiz')" class="hud-item">
+            <span class="text-xl drop-shadow-md">⚔️</span> الاختبار
         </div>
     </nav>
 
 </div>
 
 <script>
-// ---------- JS Logic (Unchanged except styling strings) ----------
+// ---------- JS Logic (Unchanged educational content) ----------
 function switchTab(tab) {
     const summaryView = document.getElementById('view-summary');
     const quizView = document.getElementById('view-quiz');
@@ -686,7 +708,7 @@ function switchTab(tab) {
         quizView.style.display = 'flex';
         navQuiz.classList.add('active');
         navSummary.classList.remove('active');
-        headerTitle.innerText = "الاختبار التفاعلي";
+        headerTitle.innerText = "التحدي الأسطوري";
         if (currentQuestionIndex === 0 && !isQuizStarted) startQuiz();
     }
 }
@@ -984,10 +1006,10 @@ function renderQuestion() {
     optionsContainer.innerHTML = '';
     q.options.forEach((opt, idx) => {
         const btn = document.createElement('button');
-        btn.className = 'quiz-btn fade-in';
+        btn.className = 'rune-btn fade-in';
         btn.style.animationDelay = `${idx * 0.05}s`;
-        // Updated styling to match dark academia look
-        btn.innerHTML = `<span style="font-family: 'Tajawal', sans-serif;">${opt}</span><div class="w-7 h-7 rounded-full border-[3px] border-slate-300 flex items-center justify-center shrink-0 icon-circle transition-all"></div>`;
+        
+        btn.innerHTML = `<span style="font-family: 'Tajawal', sans-serif;">${opt}</span><div class="w-6 h-6 rounded-full border border-slate-400 flex items-center justify-center shrink-0 icon-circle transition-all"></div>`;
         btn.onclick = () => selectAnswer(idx, btn);
         optionsContainer.appendChild(btn);
     });
@@ -1008,19 +1030,17 @@ function selectAnswer(selectedIndex, btnElement) {
         
         if (idx === q.ans) {
             btn.classList.add('correct');
-            icon.classList.replace('border-slate-300', 'border-emerald-600');
-            icon.classList.add('bg-emerald-600', 'text-white', 'shadow-md');
-            icon.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>';
+            icon.classList.replace('border-slate-400', 'border-emerald-400');
+            icon.classList.add('bg-emerald-500', 'text-white');
+            icon.innerHTML = '✓';
         } else if (idx === selectedIndex && !isCorrect) {
             btn.classList.add('wrong');
-            icon.classList.replace('border-slate-300', 'border-rose-600');
-            icon.classList.add('bg-rose-600', 'text-white', 'shadow-md');
-            icon.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            icon.classList.replace('border-slate-400', 'border-red-400');
+            icon.classList.add('bg-red-500', 'text-white');
+            icon.innerHTML = '✕';
         } else {
-            btn.style.opacity = '0.5';
+            btn.style.opacity = '0.3';
             btn.style.transform = 'scale(0.98)';
-            btn.style.background = '#F8FAFC';
-            btn.style.borderColor = '#F1F5F9';
         }
     });
 
@@ -1030,17 +1050,15 @@ function selectAnswer(selectedIndex, btnElement) {
     if (isCorrect) {
         score++;
         scoreDisplay.innerText = score;
-        expIcon.innerText = '🎯';
-        expTitle.innerText = "إجابة دقيقة!";
-        expTitle.className = "font-black text-xl text-emerald-700 font-serif";
-        explanationBox.style.borderRightColor = 'var(--success)';
-        explanationBox.style.background = 'linear-gradient(135deg, #ECFDF5 0%, #F8FAFC 100%)';
+        expIcon.innerText = '🔮';
+        expTitle.innerText = "إجابة حكيمة!";
+        expTitle.className = "font-black text-2xl text-glow-emerald";
+        explanationBox.style.borderColor = 'var(--success-glow)';
     } else {
-        expIcon.innerText = '💡';
-        expTitle.innerText = "ركز أكثر!";
-        expTitle.className = "font-black text-xl text-rose-700 font-serif";
-        explanationBox.style.borderRightColor = 'var(--danger)';
-        explanationBox.style.background = 'linear-gradient(135deg, #FFF1F2 0%, #F8FAFC 100%)';
+        expIcon.innerText = '🛡️';
+        expTitle.innerText = "تعويذة خاطئة!";
+        expTitle.className = "font-black text-2xl text-glow-rose";
+        explanationBox.style.borderColor = 'var(--danger-glow)';
     }
     
     document.getElementById('exp-text').innerText = q.exp;
