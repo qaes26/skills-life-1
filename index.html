@@ -19,14 +19,26 @@
         
         body { 
             font-family: 'Tajawal', sans-serif; 
-            background: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-            background-size: cover;
+            background-color: var(--background);
             color: var(--text-main); 
             margin: 0; 
             display: flex; 
             justify-content: center; 
             -webkit-tap-highlight-color: transparent; 
             min-height: 100vh;
+        }
+
+        /* إصلاح مشكلة الخلفية على الهواتف */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
         }
         
         /* Titles Font - Academic Vibe */
